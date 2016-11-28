@@ -1,0 +1,36 @@
+version: "2"
+volumes:
+  mongodb_data:
+
+services:
+  redis:
+    image: redis
+    hostname: redis
+    restart: always
+
+  mongodb:
+    build:
+      context: ./mongodb
+    volumes:
+      - mongodb_data:/data
+    ports:
+      - "5018:27017"
+  node:
+    extends:
+      file: docker-compose-base.yml
+      service: mean-service
+    build:
+      context: ./node
+    hostname: node
+    volumes:
+      - "./app-node:/app"
+    links:
+     - nginx
+     - mongodb
+     - redis
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - "./app-angular:/usr/share/nginx/html"

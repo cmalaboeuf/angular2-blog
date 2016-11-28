@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  mean-service:
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    stdin_open: true
+    ## tty for docker attach, also sets env for docker exec -it
+    tty: true
