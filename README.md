@@ -7,7 +7,7 @@ Sample of MEAN stack with docker and docker-compose config
 
 # Get started 
 To start the containers :
-    docker-compose build 
-    docker-compose up -d 
+`docker-compose build` 
+`docker-compose up -d `
 
 
