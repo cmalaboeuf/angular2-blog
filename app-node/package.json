@@ -12,6 +12,7 @@
     "ejs": "^2.3.1",
     "express": "4",
     "express-session": "^1.11.3",
+    "mongoose": "^4.7.0",
     "mysql": "^2.7.0",
     "redis": "^0.12.1"
   }

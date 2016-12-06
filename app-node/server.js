@@ -6,8 +6,9 @@ var bodyParser = require('body-parser');
 var client  = redis.createClient();
 var app = express();
 
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://mongodb/myDatabase');
+var db = mongoose.connection;
 
 app.use(session({
     secret: 'ssshhhhh',
@@ -16,13 +17,16 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/',function(req,res){  
-    res.json(true);
+var api = require('./routes/api');
+app.get("/api",function(req,res){
+    res.json({"apiversion":"v1"})
 });
+app.use('/api/v1', api);
 
 app.listen(8888,function(){
-    console.log("App Started on PORT 8080");
+    console.log("App Started on PORT 8888");
 });

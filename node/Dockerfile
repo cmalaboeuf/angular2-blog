@@ -1,13 +1,10 @@
-FROM ubuntu:14.04
+FROM node:argon
 
 EXPOSE 8888
 
-RUN mkdir /app
 WORKDIR /app
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get update
-RUN apt-get install -y nodejs && apt-get install -y npm
-RUN npm install --no-bin-links
-
-CMD /bin/bash
+RUN npm install -g supervisor
+#If you have problem with links on windows use this intead of npm install
+#npm install --no-bin-links
+CMD npm install && supervisor server.js
