@@ -1,20 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Page = require('../models/pages.js');
+var Page = require('../models/posts.js');
 var adminUser = require('../models/admin-users.js');
 var http = require("http");
 
-router.get('/pages', function (req, res) {
-    return Page.find(function (err, pages) {
+router.get('/posts', function (req, res) {
+    return Page.find(function (err, posts) {
         if (!err) {
-            return res.send({ "pages": pages });
+            return res.send({ "posts": posts });
         } else {
             return res.send(500, err);
         }
     });
 });
-router.get('/pages/:id', function (req, res) {
+router.get('/posts/:id', function (req, res) {
     return Page.findOne(function (err, page) {
         if (!err) {
             return res.json(page);
@@ -23,7 +23,7 @@ router.get('/pages/:id', function (req, res) {
         }
     });
 });
-router.post('/pages', function (req, res) {
+router.post('/posts', function (req, res) {
     var page = new Page({
         title: req.body.title,
         url: req.body.url,
@@ -44,7 +44,7 @@ router.post('/pages', function (req, res) {
     });
 });
 
-router.post('/pages/:id', function (req, res) {
+router.post('/posts/:id', function (req, res) {
     var id = req.params.id;
     Page.update({
         _id: id
@@ -60,7 +60,7 @@ router.post('/pages/:id', function (req, res) {
     res.status(200)
     return res.send();
 });
-router.delete('/pages/:id', function (req, res) {
+router.delete('/posts/:id', function (req, res) {
     var id = req.params.id;
     Page.remove({
         _id: id
