@@ -5,6 +5,12 @@ var Page = require('../models/posts.js');
 var adminUser = require('../models/admin-users.js');
 var http = require("http");
 
+var auth = require('./authentication');
+
+router.post('/authenticate', auth.authenticate);
+router.post('/adduser', auth.addNew);
+router.get('/getinfo', auth.getinfo);
+
 router.get('/posts', function (req, res) {
     return Page.find(function (err, posts) {
         if (!err) {

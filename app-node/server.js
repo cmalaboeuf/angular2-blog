@@ -5,6 +5,7 @@ var redisStore = require('connect-redis')(session);
 var bodyParser = require('body-parser');
 var client  = redis.createClient();
 var app = express();
+var passport = require('passport');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://mongodb/myDatabase');
@@ -20,6 +21,10 @@ app.use(session({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(passport.initialize());
+require('./middleware/passport')(passport);
+
 
 var api = require('./routes/api');
 app.get("/api",function(req,res){
