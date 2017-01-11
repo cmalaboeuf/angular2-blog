@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Http, Response,Headers } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Post} from './Model/Post';
-import {Observable} from 'rxjs/Observable';
+import { Post } from './Model/Post';
+import { Observable } from 'rxjs/Observable';
 
- let posts = [
-  { _id : "09282",
-    title: 'Install Angular CLI', 
-    url:"/toto/toto",
-    content: "PLop la girage" 
+let posts = [
+  {
+    _id: "09282",
+    title: 'Install Angular CLI',
+    url: "/toto/toto",
+    content: "PLop la girage"
   }
 ];
 @Injectable()
 export class PostService {
-  constructor(private http:Http) { 
+  constructor(private http: Http) {
     this.http = http;
   }
   private baseUrl = "/api/v1"
-   getAll():Observable<Post>{
-    return this.http.get(this.baseUrl +"/posts")
-      .map(res=>res.json());
+  getAll(): Observable<Post> {
+    return this.http.get(this.baseUrl + "/posts")
+      .map(res => res.json());
   }
 
   add(data) {
@@ -46,7 +47,7 @@ export class PostService {
   }
 
   deleteCompleted() {
-    return new Promise(resolve => {      
+    return new Promise(resolve => {
       resolve(posts);
     });
   }

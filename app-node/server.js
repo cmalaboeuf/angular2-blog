@@ -3,6 +3,7 @@ var redis = require("redis");
 var session = require('express-session');
 var redisStore = require('connect-redis')(session);
 var bodyParser = require('body-parser');
+var cors = require ('cors');
 var client = redis.createClient();
 var app = express();
 var passport = require('passport');
@@ -11,6 +12,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://mongodb/myDatabase');
 var db = mongoose.connection;
 
+app.use(cors())
 app.use(session({
     secret: 'ssshhhhh',
     // create new redis store.

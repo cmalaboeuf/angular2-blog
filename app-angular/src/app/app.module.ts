@@ -5,15 +5,22 @@ import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
+import { LoginComponent } from './login/login.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import {AuthService} from './auth.service';
+
 const routes: Routes = [
-  
-  { path: '**',component: PostComponent }
+  { path: 'userpage', component : UserpageComponent},
+  { path: 'post',component: PostComponent },
+  { path: '**',component:LoginComponent}
+
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent
-
+    PostComponent,
+    LoginComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
