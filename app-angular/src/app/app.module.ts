@@ -8,11 +8,19 @@ import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import {AuthService} from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BlogComponent } from './blog/blog.component';
+import {RequestOptions} from '@angular/http';
+import {CustomRequestOptions} from './my-header';
 
 const routes: Routes = [
-  { path: 'userpage', component : UserpageComponent},
-  { path: 'post',component: PostComponent },
-  { path: '**',component:LoginComponent}
+  { path: 'blog', component : BlogComponent},
+  { path: 'userpage', component : UserpageComponent},// must be a child of dashboard
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },//find a way to unified dashboard && admin && ..
+  { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'post',component: PostComponent },//must be a child of blog
+  { path: '**',component:BlogComponent}
 
 ];
 @NgModule({
@@ -20,7 +28,9 @@ const routes: Routes = [
     AppComponent,
     PostComponent,
     LoginComponent,
-    UserpageComponent
+    UserpageComponent,
+    DashboardComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,11 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService],
+  providers: [
+    AuthGuard,
+    AuthService,
+    {provide: RequestOptions, useClass: CustomRequestOptions}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

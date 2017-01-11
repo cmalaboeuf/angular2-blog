@@ -67,4 +67,4 @@ var postsApi = {
     }
 }
 
-module.exports  = postsApi;
+module.exports = postsApi;

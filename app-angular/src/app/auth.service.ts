@@ -22,7 +22,7 @@ export class AuthService {
       this.http.post('http://192.168.99.100/api/v1/authenticate', creds, { headers: headers }).subscribe(data => {
 
         if (data.json().success) {
-          window.localStorage.setItem('raja', data.json().token);
+          window.localStorage.setItem('currentUser', data.json().token);
           this.isLoggedin = true;
         }
         resolve(this.isLoggedin);
