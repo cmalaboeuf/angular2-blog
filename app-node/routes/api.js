@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var adminUser = require('../models/admin-users.js');
 var http = require("http");
 
 var auth = require('./authentication');
