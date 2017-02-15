@@ -24,7 +24,6 @@ var postsApi = {
             title: req.body.title,
             url: req.body.url,
             content: req.body.content,
-            menuIndex: req.body.menuIndex,
             date: new Date(Date.now())
         });
 
@@ -48,7 +47,6 @@ var postsApi = {
                     title: req.body.title || "",
                     url: req.body.url || "",
                     content: req.body.content || "",
-                    menuIndex: req.body.menuIndex || "",
                     date: new Date(Date.now())
                 }
             }).exec();

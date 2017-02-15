@@ -23,11 +23,9 @@ export class PostService {
       .map(res => res.json());
   }
 
-  add(data) {
-    return new Promise(resolve => {
-      posts.push(data);
-      resolve(data);
-    });
+  public add(data) {
+    return this.http.post(this.baseUrl + "/posts",data)
+      .map(res => res.json());
   }
 
   put(data) {

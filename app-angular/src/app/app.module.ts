@@ -13,12 +13,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog.component';
 import {RequestOptions} from '@angular/http';
 import {CustomRequestOptions} from './my-header';
+import {PostEditorComponent} from './post-editor/post-editor.component';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
   { path: 'userpage', component : UserpageComponent},// must be a child of dashboard
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },//find a way to unified dashboard && admin && ..
-  { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+    children: [
+      {path : 'newpost', component : PostEditorComponent}
+    ] },//find a way to unified dashboard && admin && ..
+  { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'post',component: PostComponent },//must be a child of blog
   { path: '**',component:BlogComponent}
 
@@ -30,7 +34,8 @@ const routes: Routes = [
     LoginComponent,
     UserpageComponent,
     DashboardComponent,
-    BlogComponent
+    BlogComponent,
+    PostEditorComponent
   ],
   imports: [
     BrowserModule,

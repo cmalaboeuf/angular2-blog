@@ -60,6 +60,8 @@ var auth = {
             return res.json({ success: false, msg: 'No header' });
         }
     }
+
+
 }
 
 module.exports = auth;
