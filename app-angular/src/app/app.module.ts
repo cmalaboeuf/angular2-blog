@@ -24,6 +24,7 @@ const routes: Routes = [
     ] },//find a way to unified dashboard && admin && ..
   { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'post',component: PostComponent },//must be a child of blog
+  { path: 'login',component: LoginComponent },//must be a child of blog
   { path: '**',component:BlogComponent}
 
 ];

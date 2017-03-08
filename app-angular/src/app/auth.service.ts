@@ -19,7 +19,7 @@ export class AuthService {
 
     return new Promise(resolve => {
 
-      this.http.post('http://192.168.99.100/api/v1/authenticate', creds, { headers: headers }).subscribe(data => {
+      this.http.post('http://localhost/api/v1/authenticate', creds, { headers: headers }).subscribe(data => {
 
         if (data.json().success) {
           window.localStorage.setItem('currentUser', data.json().token);
@@ -46,7 +46,7 @@ export class AuthService {
       var creds = "name=" + user.name + "&password=" + user.password;
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      this.http.post('http://192.168.99.100/api/v1/adduser', creds, { headers: headers }).subscribe(data => {
+      this.http.post('http://localhost/api/v1/adduser', creds, { headers: headers }).subscribe(data => {
         if (data.json().success)
           resolve(true);
         else

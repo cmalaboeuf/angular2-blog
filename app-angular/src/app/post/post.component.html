@@ -1,15 +1,10 @@
-<div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" *ngFor="let post of posts">
-  <div class="mdl-card__media mdl-color-text--grey-50">
-    <h3>{{post.title}}</h3>
-  </div>
-  <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
+<div class="col-lg-12" *ngFor="let post of posts">  
+  <h3>{{post.title}}</h3>  
+  <p>
     {{post.content}}
-  </div>
-  <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-    <div class="minilogo"></div>
-    <div>
-      <strong>The Newist</strong>
-      <span>{{post.date}}</span>
-    </div>
-  </div>
+  </p> 
+  <time datetime="29 Nov 2014" class="post-date date">{{post.date | date}}</time>
+   • 
+  <span class="post-category">on <a href="/tag/javascript/">javascript</a>, <a href="/tag/node-js/">node.js</a>, <a href="/tag/memory-leak/">memory leak</a>, <a href="/tag/performance/">performance</a>, <a href="/tag/memwatch/">memwatch</a>, <a href="/tag/profiling/">profiling</a></span>
+  <hr class="post-divider">  
 </div>
