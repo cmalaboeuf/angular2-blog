@@ -13,6 +13,7 @@
       <input class="form-control" type="button" id="save-post" name="save-post" class="" value="Save" (click)="saveNewPost($event)"/>
     </div>
   </div>
-  <div id="form-output" class="col-lg-6">
+  <div id="form-output" class="col-lg-6" [innerHtml]="newPost.content | markdown">
+    
   </div>
 </div>

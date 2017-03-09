@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
+    "markdown-to-html-pipe": "^1.2.0",
+    "marked": "^0.3.6",
     "rxjs": "^5.1.0",
     "zone.js": "^0.7.6"
   },

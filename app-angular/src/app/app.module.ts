@@ -14,6 +14,7 @@ import { BlogComponent } from './blog/blog.component';
 import {RequestOptions} from '@angular/http';
 import {CustomRequestOptions} from './my-header';
 import {PostEditorComponent} from './post-editor/post-editor.component';
+import {MarkdownPipe} from './pipe/markdown';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
@@ -36,7 +37,8 @@ const routes: Routes = [
     UserpageComponent,
     DashboardComponent,
     BlogComponent,
-    PostEditorComponent
+    PostEditorComponent,
+    MarkdownPipe
   ],
   imports: [
     BrowserModule,

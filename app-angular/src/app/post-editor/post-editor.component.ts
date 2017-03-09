@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import {Post} from '../post/Model/Post';
 import {PostService} from '../post/post.service';
 import {ViewEncapsulation} from '@angular/core';
+//import {MarkdownToHtmlPipe} from 'markdown-to-html-pipe';
+
 
 @Component({
   selector: 'app-post-editor',
@@ -10,6 +12,7 @@ import {ViewEncapsulation} from '@angular/core';
   providers: [PostService],
   encapsulation: ViewEncapsulation.None
 })
+
 export class PostEditorComponent implements OnInit {
 
   private newPost : Post = new Post();
