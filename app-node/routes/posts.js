@@ -1,7 +1,7 @@
 var Post = require('../models/post.js');
 
 var postsApi = {
-    getAll: function (req, res) {
+    getAll: (req,res) => {
         return Post.find(function (err, posts) {
             if (!err) {
                 return res.send({ "posts": posts });
@@ -10,7 +10,7 @@ var postsApi = {
             }
         });
     },
-    getById: function (req, res) {
+    getById: (req,res) => {
         return Post.findOne(function (err, posts) {
             if (!err) {
                 return res.json(posts);
@@ -19,7 +19,7 @@ var postsApi = {
             }
         });
     },
-    newPost: function (req, res) {
+    newPost: (req,res) => {
         var post = new Post({
             title: req.body.title,
             url: req.body.url,
@@ -38,7 +38,7 @@ var postsApi = {
             }
         });
     },
-    editPost: function (req, res) {
+    editPost: (req,res) => {
         var id = req.params.id;
         Post.update({
             _id: id
@@ -53,7 +53,7 @@ var postsApi = {
         res.status(200)
         return res.send();
     },
-    deletePost: function (req, res) {
+    deletePost: (req,res) => {
         var id = req.params.id;
         Post.remove({
             _id: id
