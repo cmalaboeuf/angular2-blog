@@ -1,10 +1,18 @@
-<div class="mdl-grid">
-  <div  class="mdl-cell mdl-cell-6-col" contenteditable="true" >
-      <input class="mdl-textfield__input" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="url"/>
-      <input class="mdl-textfield__input" type="text" id="post-title" [(ngModel)]="newPost.title" placeholder="title"/>
-      <textarea id="post-input" [(ngModel)]="newPost.content" ></textarea>
-      <input type="button" id="save-post" name="save-post" class="mdl-button mdl-js-button mdl-button--raised" value="Save" (click)="saveNewPost($event)"/>
+<div class="row">
+  <div  class="col-lg-6" contenteditable="true" >
+    <div class="input-group">
+      <input class="form-control" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="url"/>
+    </div>
+    <div class="input-group">
+      <input class="form-control" type="text" id="post-title" [(ngModel)]="newPost.title" placeholder="title"/>
+    </div>
+    <div class="input-group">
+      <textarea class="form-control" id="post-input"  [(ngModel)]="newPost.content" ></textarea>
+    </div>
+    <div class="input-group">
+      <input class="form-control" type="button" id="save-post" name="save-post" class="" value="Save" (click)="saveNewPost($event)"/>
+    </div>
   </div>
-  <div id="form-output" class="mdl-cell mdl-cell--6-col">
+  <div id="form-output" class="col-lg-6">
   </div>
 </div>
