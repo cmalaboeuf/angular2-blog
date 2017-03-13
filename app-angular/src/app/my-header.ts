@@ -7,7 +7,8 @@ import {BaseRequestOptions} from '@angular/http'
 class CustomRequestOptions extends BaseRequestOptions {
     constructor() {
         super();
-        this.headers.append('Authorization', 'my-token');
+        // window.localStorage.getItem('currentUser');
+        this.headers.append('Authorization', 'JWT ' + window.localStorage.getItem('currentUser'));
         this.headers.append('foo', 'bar');
     }
 }

@@ -3,16 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var http = require("http");
 
-var auth = require('./authentication');
 var posts = require('./posts');
 var tags = require('./tags');
-
-/**
- * API Auth
- */
-router.post('/authenticate', auth.authenticate);
-router.post('/adduser', auth.addNew);
-router.get('/getinfo', auth.getinfo);
 
 /**
  * API Posts

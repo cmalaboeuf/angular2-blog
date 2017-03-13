@@ -27,12 +27,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
+app.use('/api/v1/', passport.authenticate('jwt', { session: false }), function(req, res,next) {  
+  next();
+});
 
 var api = require('./routes/api');
 app.get("/api", function (req, res) {
     res.json({ "apiversion": "v1" })
 });
 app.use('/api/v1', api);
+
+var api_auth = require('./routes/api_auth');
+app.use("/api",api_auth);
 
 
 app.listen(8888, function () {

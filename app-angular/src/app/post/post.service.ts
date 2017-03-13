@@ -17,7 +17,8 @@ export class PostService {
   constructor(private http: Http) {
     this.http = http;
   }
-  private baseUrl = "/api/v1"
+  private baseUrlAuth = "/api/v1";
+  private baseUrl = "/api"
   getAll(): Observable<Post> {
     return this.http.get(this.baseUrl + "/posts")
       .map(res => res.json());

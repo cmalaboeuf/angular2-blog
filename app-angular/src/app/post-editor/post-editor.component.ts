@@ -7,7 +7,7 @@ import {ViewEncapsulation} from '@angular/core';
   selector: 'app-post-editor',
   templateUrl: './post-editor.component.html',
   styleUrls: ['./post-editor.component.css'],
-    providers: [PostService],
+  providers: [PostService],
   encapsulation: ViewEncapsulation.None
 })
 export class PostEditorComponent implements OnInit {
