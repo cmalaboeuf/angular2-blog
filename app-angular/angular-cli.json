@@ -20,7 +20,8 @@
       "styles": [      
          "styles.css"
       ],
-      "scripts": [         
+      "scripts": [     
+         "../node_modules/showdown/dist/showdown.js"      
       ],
      "environmentSource": "environments/environment.ts",
         "environments": {
