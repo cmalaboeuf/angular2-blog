@@ -7,8 +7,7 @@ import {BaseRequestOptions} from '@angular/http'
 class CustomRequestOptions extends BaseRequestOptions {
     constructor() {
         super();
-        // window.localStorage.getItem('currentUser');
+        //TODO Better than direct get token from localStorage
         this.headers.append('Authorization', 'JWT ' + window.localStorage.getItem('currentUser'));
-        this.headers.append('foo', 'bar');
     }
 }
