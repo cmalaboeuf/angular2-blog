@@ -2,8 +2,6 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import {Post} from '../post/Model/Post';
 import {PostService} from '../post/post.service';
 import {ViewEncapsulation} from '@angular/core';
-//import {MarkdownToHtmlPipe} from 'markdown-to-html-pipe';
-
 
 @Component({
   selector: 'app-post-editor',
@@ -24,8 +22,6 @@ export class PostEditorComponent implements OnInit {
   saveNewPost(event){
     this.postService.add(this.newPost).subscribe(res => {
       return this.newPost;
-    });;
-    console.log("plop");
+    });;   
   }
-
 }

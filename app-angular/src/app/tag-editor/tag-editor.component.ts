@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbRadioGroup} from '@ng-bootstrap/ng-bootstrap'
 import {TagService} from '../tag/tag.service';
+import {Tag} from '../tag/Model/Tag';
 
 @Component({
   selector: 'app-tag-editor',
@@ -10,9 +11,13 @@ import {TagService} from '../tag/tag.service';
 })
 export class TagEditorComponent implements OnInit {
 
-  public tags;
+  public tags: Array<Tag>;
 
-  constructor(private tagService: TagService) { }
+  public newTag:Tag
+
+  constructor(private tagService: TagService) {
+    this.newTag = new Tag();
+   }
   getTags(){
     return this.tagService.getAll().subscribe(res => {
       return this.tags = res["tags"];
@@ -23,4 +28,11 @@ export class TagEditorComponent implements OnInit {
     this.getTags()
   }
 
+  saveNewTag(event){
+    this.tagService.add(this.newTag).subscribe(res => {
+      return this.newTag;
+       
+    });
+    this.getTags();
+  }
 }

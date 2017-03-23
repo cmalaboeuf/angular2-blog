@@ -1,7 +1,30 @@
 <div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">Tag</h4>     
+        <!--<a href="#" class="card-link">Another link</a>-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
   <div  class="col-lg-6" >
-  <app-tag [tag]="tag" *ngFor="let tag of tags" >
-  </app-tag>
-  <div class="col-lg-6">
+    <app-tag [tag]="tag" *ngFor="let tag of tags"></app-tag>
+  </div>
+  <div class="col-lg-5">      
+    <div class="form-group">
+      <label for="formName">Name</label>
+      <input type="text" id="formName" name="name"  [(ngModel)]="newTag.name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formUrl">Url</label>
+      <input type="text" id="formUrl" [(ngModel)]="newTag.url" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formDescription">Description</label>
+      <input type="text" id="formDescription" [(ngModel)]="newTag.description" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="saveNewTag($event)">Save</button>    
   </div>
 </div>
