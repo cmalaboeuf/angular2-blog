@@ -10,8 +10,7 @@ import {TagService} from '../tag/tag.service';
 })
 export class TagEditorComponent implements OnInit {
 
-  private tags;
-  private newPost;
+  public tags;
 
   constructor(private tagService: TagService) { }
   getTags(){

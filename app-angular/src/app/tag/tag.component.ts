@@ -8,7 +8,7 @@ import {Tag} from './Model/Tag';
 })
 export class TagComponent implements OnInit {
 
-  @Input() sample :Tag;
+  @Input() tag :Tag;
   constructor() { }
 
   ngOnInit() {

@@ -44,7 +44,7 @@ var tagsApi = {
             _id: id
         }, {
                 $set: {
-                    title: req.body.name || "",
+                    name: req.body.name || "",
                     url: req.body.url || "",
                     description: req.body.description || "",
                     date: new Date(Date.now())

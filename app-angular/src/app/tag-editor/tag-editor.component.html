@@ -1,9 +1,7 @@
 <div class="row">
   <div  class="col-lg-6" >
-  <app-tag  *ngFor="let tag of tags" >
+  <app-tag [tag]="tag" *ngFor="let tag of tags" >
   </app-tag>
-
-
   <div class="col-lg-6">
   </div>
 </div>
