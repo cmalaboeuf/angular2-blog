@@ -16,13 +16,16 @@ import {CustomRequestOptions} from './my-header';
 import {PostEditorComponent} from './post-editor/post-editor.component';
 import {MarkdownPipe} from './pipe/markdown';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TagComponent } from './tag/tag.component';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
   { path: 'userpage', component : UserpageComponent},// must be a child of dashboard
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
-      {path : 'newpost', component : PostEditorComponent}
+      {path : 'newpost', component : PostEditorComponent},
+       {path : 'tageditor', component : TagEditorComponent}
     ] },//find a way to unified dashboard && admin && ..
   { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'post',component: PostComponent },//must be a child of blog
@@ -40,13 +43,15 @@ const routes: Routes = [
     BlogComponent,
     PostEditorComponent,
     MarkdownPipe,
-    TagEditorComponent  
+    TagEditorComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgbModule.forRoot()
   ],
   providers: [
     AuthGuard,

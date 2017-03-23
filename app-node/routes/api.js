@@ -12,7 +12,6 @@ var tags = require('./tags');
 router.get('/posts',posts.getAll);
 router.get('/posts/:id',posts.getById);
 router.post('/posts', posts.newPost);
-
 router.put('/posts/:id', posts.editPost);
 router.delete('/posts/:id',posts.deletePost);
 

@@ -11,7 +11,7 @@ var tagsApi = {
         });
     },
     getById: (req,res) => {
-        return Tag.findOne(function (err, tags) {
+        return Tag.findOne({"_id" : req.params.id},function (err, tags) {
             if (!err) {
                 return res.json(tags);
             } else {
