@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="card-block">
+        <h4 class="card-title">Content</h4>            
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <input type="submit" class="btn btn-primary" (click)="newTag($event)" value="New post"> 
+    </div> 
+  </div>
+</div>
+<div class="row">
+  <div  class="col-lg-4" >
+    <div *ngFor="let post of posts" class="card" (click)="onClick(post)" >
+      <div class="card-block">
+        <h5 class="card-title">{{post.title}}</h5>
+        <!--<p class="card-text">{{post.content}}|</p>        -->
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">  
+    <div class="card" *ngIf="posts.length" [innerHtml]="currentPost.content | markdown">
+    </div>
+  </div>
+</div>
+

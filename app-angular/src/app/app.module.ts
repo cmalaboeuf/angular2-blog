@@ -18,6 +18,7 @@ import {MarkdownPipe} from './pipe/markdown';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TagComponent } from './tag/tag.component';
+import { ContentComponent } from './content/content.component';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       {path : 'newpost', component : PostEditorComponent},
-       {path : 'tageditor', component : TagEditorComponent}
+      {path : 'tageditor', component : TagEditorComponent},
+      {path : 'content',component: ContentComponent}
     ] },//find a way to unified dashboard && admin && ..
   { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'post',component: PostComponent },//must be a child of blog
@@ -44,7 +46,8 @@ const routes: Routes = [
     PostEditorComponent,
     MarkdownPipe,
     TagEditorComponent,
-    TagComponent
+    TagComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
