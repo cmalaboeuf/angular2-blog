@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Output,EventEmitter } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Tag } from './Model/Tag';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class TagService {
+export class TagService {  
   constructor(private http: Http) {
     this.http = http;
   }
@@ -18,6 +18,11 @@ export class TagService {
   public add(data) {
     return this.http.post(this.baseUrl + "/tags",data)
       .map(res => res.json());
+  }
+
+  public update(data){
+    return this.http.put(this.baseUrl + '/tags/' + data._id,data).
+    map(res=>res.json());
   }
 
   // put(data) {

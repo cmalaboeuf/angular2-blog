@@ -51,7 +51,7 @@ var tagsApi = {
                 }
             }).exec();
         res.status(200)
-        return res.send();
+        return res.send({});
     },
     deleteTag: (req,res) => {
         var id = req.params.id;
