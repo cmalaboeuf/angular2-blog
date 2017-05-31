@@ -14,13 +14,13 @@ import {ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class PostComponent implements OnInit {
-  private posts;  
+  private posts;
   private newPost;
 
   constructor(private postService: PostService) { }
   getPosts(){
     return this.postService.getAll().subscribe(res => {
-      return this.posts = res["posts"];
+      return this.posts = res['posts'];
     });
   }
 
