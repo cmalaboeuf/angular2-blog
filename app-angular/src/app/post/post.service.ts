@@ -4,28 +4,23 @@ import 'rxjs/add/operator/map';
 import { Post } from './Model/Post';
 import { Observable } from 'rxjs/Observable';
 
-let posts = [
-  {
-    _id: "09282",
-    title: 'Install Angular CLI',
-    url: "/toto/toto",
-    content: "PLop la girage"
-  }
-];
+let posts = [];
 @Injectable()
 export class PostService {
+  private baseUrlAuth = '/api/v1';
+  private baseUrl = '/api';
+
   constructor(private http: Http) {
     this.http = http;
   }
-  private baseUrlAuth = "/api/v1";
-  private baseUrl = "/api"
+
   getAll(): Observable<Post> {
-    return this.http.get(this.baseUrl + "/posts")
+    return this.http.get(this.baseUrlAuth + '/posts')
       .map(res => res.json());
   }
 
   public add(data) {
-    return this.http.post(this.baseUrl + "/posts",data)
+    return this.http.post(this.baseUrlAuth + '/posts',data)
       .map(res => res.json());
   }
 
