@@ -2,7 +2,7 @@ export class Tag {
     constructor(){}
     public id: string;
     public url : string;
-    public name: string;
+    public slug: string;
     public description: string;
     public date:string;
 }

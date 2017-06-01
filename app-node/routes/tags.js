@@ -4,16 +4,16 @@ var tagsApi = {
     getAll: (req,res) => {
         return Tag.find(function (err, tags) {
             if (!err) {
-                return res.send({ "tags": tags });
+                return res.send({ "data": tags });
             } else {
                 return res.send(500, err);
             }
         });
     },
     getById: (req,res) => {
-        return Tag.findOne({"_id" : req.params.id},function (err, tags) {
+        return Tag.findOne({"_id" : req.params.id},function (err, tag) {
             if (!err) {
-                return res.json(tags);
+                return res.json({"data":tag});
             } else {
                 return res.send(500, err);
             }
@@ -22,7 +22,7 @@ var tagsApi = {
     newTag: (req,res) => {
         var tag= new Tag({
             name: req.body.name,
-            url: req.body.url,
+            slug: req.body.slug,
             description: req.body.description,
             date: new Date(Date.now())
         });
@@ -30,7 +30,7 @@ var tagsApi = {
         tag.save(function (err) {
             if (!err) {
                 res.status(200);
-                res.json(tag)
+                res.json(tag);
 
             } else {
                 res.status(500);
@@ -45,12 +45,12 @@ var tagsApi = {
         }, {
                 $set: {
                     name: req.body.name || "",
-                    url: req.body.url || "",
+                    slug: req.body.slug || "",
                     description: req.body.description || "",
                     date: new Date(Date.now())
                 }
             }).exec();
-        res.status(200)
+        res.status(200);
         return res.send({});
     },
     deleteTag: (req,res) => {

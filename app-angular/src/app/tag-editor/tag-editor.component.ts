@@ -4,12 +4,12 @@ import {TagService} from '../tag/tag.service';
 import {Tag} from '../tag/Model/Tag';
 import {TagComponent} from '../tag/tag.component';
 
-@Component({  
+@Component({
   selector: 'app-tag-editor',
   templateUrl: './tag-editor.component.html',
   styleUrls: ['./tag-editor.component.css'],
   providers: [TagService]
-  
+
 })
 export class TagEditorComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class TagEditorComponent implements OnInit {
    }
   getTags(){
     return this.tagService.getAll().subscribe(res => {
-      return this.tags = res["tags"];
+      return this.tags = res["data"];
     });
   }
 
@@ -42,7 +42,7 @@ export class TagEditorComponent implements OnInit {
   saveCurrentTag(event){
     if(this.isUpdate === false){
       this.tagService.add(this.currentTag).subscribe(res => {
-        return this.tags.push(this.currentTag);        
+        return this.tags.push(this.currentTag);
       });
     }
     else{
@@ -50,7 +50,7 @@ export class TagEditorComponent implements OnInit {
       console.log (this.isUpdate)
       this.tagService.update(this.currentTag)
         .subscribe(res=>{return this.tags});
-    }    
+    }
   }
 
    onNotify(tag:Tag):void {
