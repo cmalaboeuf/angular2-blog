@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var http = require("http");
-
 var posts = require('./posts');
 var tags = require('./tags');
 
