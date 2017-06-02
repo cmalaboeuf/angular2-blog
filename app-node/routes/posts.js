@@ -24,13 +24,14 @@ var postsApi = {
       title: req.body.title,
       url: req.body.url,
       content: req.body.content,
+      tags : req.body.tags,
       date: new Date(Date.now())
     });
 
     post.save(function (err) {
       if (!err) {
         res.status(200);
-        res.json(post)
+        res.json(post);
 
       } else {
         res.status(500);
@@ -47,7 +48,8 @@ var postsApi = {
         title: req.body.title || '',
         url: req.body.url || '',
         content: req.body.content || '',
-        date: new Date(Date.now())
+        date: new Date(Date.now()),
+        tags : req.body.tags,
       }}).exec();
     res.status(200);
     return res.send();

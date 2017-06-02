@@ -23,7 +23,7 @@ app.use(session({
 }));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
