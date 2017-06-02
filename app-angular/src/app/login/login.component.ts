@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     console.log("plop");
     this.myservice.login(usercreds).then(data => {
       if (data){
-        this.router.navigate(["dashboard"]);
+        this.router.navigate(["dashboard/home"]);
         return;
       }
     });

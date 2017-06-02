@@ -24,6 +24,7 @@
     "@angular/router": "^4.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.21",
     "core-js": "^2.4.1",
+    "ng2-select": "^1.2.0",
     "rxjs": "^5.4.0",
     "showdown": "^1.6.4",
     "typescript": "^2.2.1",

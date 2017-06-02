@@ -19,6 +19,7 @@ import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
+import {SelectModule} from 'ng2-select';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
@@ -55,7 +56,8 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    SelectModule
   ],
   providers: [
     AuthGuard,
