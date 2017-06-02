@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'userpage', component : UserpageComponent},// must be a child of dashboard
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
+      {path : 'home', component : DashboardComponent},
       {path : 'newpost', component : PostEditorComponent},
       {path : 'tageditor', component : TagEditorComponent},
       {path : 'content',component: ContentComponent}
