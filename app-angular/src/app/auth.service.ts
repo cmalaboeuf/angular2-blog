@@ -14,8 +14,12 @@ export class AuthService {
 
   login(user):any {
     var headers = new Headers();
-    var creds = "name=" + user.name + "&password=" + user.password;
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    var creds = {
+      name : user.name,
+      password: user.password
+    };
+
+    headers.append('Content-Type', 'application/json');
 
     return new Promise(resolve => {
 

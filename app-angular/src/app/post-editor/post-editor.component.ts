@@ -2,7 +2,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import {Post} from '../post/Model/Post';
 import {PostService} from '../post/post.service';
 import {ViewEncapsulation} from '@angular/core';
-import {SelectModule} from 'ng2-select';
+
 @Component({
   selector: 'app-post-editor',
   templateUrl: './post-editor.component.html',

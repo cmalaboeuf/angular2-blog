@@ -7,24 +7,24 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
 import { UserpageComponent } from './userpage/userpage.component';
-import {AuthService} from './auth.service';
+import { AuthService} from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog.component';
-import {RequestOptions} from '@angular/http';
-import {CustomRequestOptions} from './my-header';
-import {PostEditorComponent} from './post-editor/post-editor.component';
-import {MarkdownPipe} from './pipe/markdown';
+import { RequestOptions } from '@angular/http';
+import { CustomRequestOptions } from './my-header';
+import { PostEditorComponent } from './post-editor/post-editor.component';
+import { MarkdownPipe } from './pipe/markdown';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
-import {SelectModule} from 'ng2-select';
+import { SelectModule } from 'ng2-select';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
   { path: 'userpage', component : UserpageComponent},// must be a child of dashboard
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+  { path: 'dashboard', component: DashboardComponent, canActivateChild: [AuthGuard],
     children: [
       {path : 'home', component : DashboardComponent},
       {path : 'newpost', component : PostEditorComponent},
