@@ -18,13 +18,9 @@ export class AuthService {
       name : user.name,
       password: user.password
     };
-
     headers.append('Content-Type', 'application/json');
-
     return new Promise(resolve => {
-
-      this.http.post('http://localhost/api/authenticate', creds, { headers: headers }).subscribe(data => {
-
+      this.http.post('http://localhost/api/authenticate', creds, { headers }).subscribe(data => {
         if (data.json().success) {
           window.localStorage.setItem('currentUser', data.json().token);
           this.isLoggedin = true;

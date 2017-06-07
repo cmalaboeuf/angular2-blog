@@ -3,8 +3,9 @@ import { Router, CanActivate, CanActivateChild } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-
-  constructor(private router: Router) { }
+  //This maner of writing param initialize and create param router
+  constructor(private router : Router) {
+  }
 
   canActivate() {
     if (localStorage.getItem('currentUser')) {
