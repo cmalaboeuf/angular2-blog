@@ -12,7 +12,7 @@ export class ContentComponent implements OnInit {
   private currentPost:Post;
 
   public posts:Array<Post>;
-  constructor(_postService :PostService) { 
+  constructor(_postService :PostService) {
     this.postService = _postService;
     this.posts = new Array();
     this.currentPost = new Post();
@@ -23,7 +23,7 @@ export class ContentComponent implements OnInit {
       return this.posts = res["posts"];
     });
   }
-  onClick(post:Post){    
+  onClick(post:Post){
     this.currentPost = post;
   }
 
@@ -33,6 +33,7 @@ export class ContentComponent implements OnInit {
       this.currentPost = this.posts.shift();
     }
   }
+
 
 
 }

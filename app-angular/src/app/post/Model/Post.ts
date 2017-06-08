@@ -5,4 +5,5 @@ export class Post {
     public url : string;
     public content: string;
     public date:string;
+    public tags : Array<any>;
 }

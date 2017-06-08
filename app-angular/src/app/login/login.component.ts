@@ -20,11 +20,10 @@ export class LoginComponent implements OnInit {
     this.router = router;
   }
 
-  login(usercreds) {
-    console.log("plop");
+  clickLogin(usercreds) {
     this.myservice.login(usercreds).then(data => {
       if (data){
-        this.router.navigate(["dashboard"]);
+        this.router.navigate(["dashboard/home"]);
         return;
       }
     });

@@ -14,6 +14,17 @@
     </div>
   </div>
   <div id="form-output" class="col-lg-6" [innerHtml]="newPost.content | markdown">
-    
+
   </div>
+  <ng-select
+    name="list-tag"
+    [allowClear]="true"
+    [multiple]="true"
+    [items]="items"
+    [disabled]="disabled"
+    (data)="refreshValue($event)"
+    (selected)="selected($event)"
+    (removed)="removed($event)"
+    placeholder="No tag selected"></ng-select>
+
 </div>

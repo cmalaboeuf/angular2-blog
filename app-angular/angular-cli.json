@@ -17,11 +17,12 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "mobile": false,
-      "styles": [      
-         "styles.css"
+      "styles": [
+         "styles.css",
+         "ng2-select.css"
       ],
-      "scripts": [     
-         "../node_modules/showdown/dist/showdown.js"      
+      "scripts": [
+         "../node_modules/showdown/dist/showdown.js"
       ],
      "environmentSource": "environments/environment.ts",
         "environments": {
