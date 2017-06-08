@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService) { }
   getPosts(){
-    return this.postService.getAll().subscribe(res => {
+    return this.postService.getAllUnauthenticated().subscribe(res => {
       return this.posts = res['posts'];
     });
   }
