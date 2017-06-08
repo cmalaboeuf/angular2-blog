@@ -19,7 +19,7 @@ import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
-import { SelectModule } from 'ng2-select';
+import { SelectModule } from 'ng2-select-compat';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
