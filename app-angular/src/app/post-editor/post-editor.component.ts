@@ -2,12 +2,13 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import {Post} from '../post/Model/Post';
 import {PostService} from '../post/post.service';
 import {ViewEncapsulation} from '@angular/core';
+import { TagService } from '../tag/tag.service';
 
 @Component({
   selector: 'app-post-editor',
   templateUrl: './post-editor.component.html',
   styleUrls: ['./post-editor.component.css'],
-  providers: [PostService],
+  providers: [PostService,TagService],
   encapsulation:ViewEncapsulation.Emulated
 
 })
@@ -15,30 +16,25 @@ import {ViewEncapsulation} from '@angular/core';
 export class PostEditorComponent implements OnInit {
 
   private newPost : Post = new Post();
-  constructor(private postService: PostService) {
-
-  }
+  constructor(private postService: PostService, private tagService : TagService) {/**/}
 
   ngOnInit() {
+   this.tagService.getAll().subscribe(res=>{
+     return this.items = res["data"].map((item:any)=> {
+       return {id : item._id,text: item.name};
+     });
+    })
   }
 
   saveNewPost(event){
     this.postService.add(this.newPost).subscribe(res => {
       return this.newPost;
-    });;
+    });
   }
 
- public items:Array<string> = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
-    'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
-    'Budapest', 'Cologne', 'Copenhagen', 'Dortmund', 'Dresden', 'Dublin', 'Düsseldorf',
-    'Essen', 'Frankfurt', 'Genoa', 'Glasgow', 'Gothenburg', 'Hamburg', 'Hannover',
-    'Helsinki', 'Leeds', 'Leipzig', 'Lisbon', 'Łódź', 'London', 'Kraków', 'Madrid',
-    'Málaga', 'Manchester', 'Marseille', 'Milan', 'Munich', 'Naples', 'Palermo',
-    'Paris', 'Poznań', 'Prague', 'Riga', 'Rome', 'Rotterdam', 'Seville', 'Sheffield',
-    'Sofia', 'Stockholm', 'Stuttgart', 'The Hague', 'Turin', 'Valencia', 'Vienna',
-    'Vilnius', 'Warsaw', 'Wrocław', 'Zagreb', 'Zaragoza'];
+ public items:Array<string> = [];
 
-  public value:any = ['Athens'];
+  public value:any;
   private _disabledV:string = '0';
   private disabled:boolean = false;
 
@@ -60,7 +56,9 @@ export class PostEditorComponent implements OnInit {
   }
 
   public refreshValue(value:any):void {
-    this.value = value;
+    this.newPost.tags = value.map((item:any) => {
+        return item.id;
+      });
   }
 
   public itemsToString(value:Array<any> = []):string {
