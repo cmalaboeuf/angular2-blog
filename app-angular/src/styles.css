@@ -1,3 +1,7 @@
+html, body {
+    height:100%;
+    margin:0;
+}
 body {
   /*background-color: #EEEEEE;*/
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -14,4 +18,12 @@ body {
 }
 .post-category a {
     color: #c7c7c7;
+}
+
+.full-height {
+  height:100%;
+}
+
+.nav-tabs .nav-link, .nav-pills .nav-link{
+  padding : 5px 10px 5px 15px;
 }

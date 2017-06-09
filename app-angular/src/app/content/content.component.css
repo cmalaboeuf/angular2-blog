@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+
+.row-full-height {
+  background-color: green;
+  flex:2;
+  display: flex;
+}
