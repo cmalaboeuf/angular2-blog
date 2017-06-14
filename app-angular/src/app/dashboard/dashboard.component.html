@@ -21,14 +21,16 @@
 
 <div class="container-fluid full-height">
   <div class="row full-height">
-    <div class="col-sm-3 col-md-2 ">
-      <nav class="hidden-xs-down bg-faded sidebar">
+    <div id="dashboard-nav-bar" class="full-height col-md-2">
+
+      <nav  class="hidden-xs-down bg-faded sidebar full-height">
+
         <ul class="nav nav-pills flex-column">
-          <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" routerLink="/dashboard/home">Home<span class="sr-only">(current)</span></a>
+          <li class="nav-item" >
+            <input type="text" class="form-control" placeholder="Search">
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" routerLink="/dashboard/newpost">New post<span class="sr-only">(current)</span></a>
+           <span class="glyphicon glyphicon-pencil"></span> <a class="nav-link " [routerLinkActive]="['active']" routerLink="/dashboard/newpost">New post<span class="sr-only">(current)</span></a>
           </li>
             <li class="nav-item">
             <a class="nav-link" [routerLinkActive]="['active']" routerLink="/dashboard/content">Content<span class="sr-only"></span></a>
@@ -42,7 +44,7 @@
         </ul>
       </nav>
     </div>
-    <div class="col-sm-9 col-md-10">
+    <div id="content-view" class="col-md-10">
       <router-outlet></router-outlet>
     </div>
   </div>

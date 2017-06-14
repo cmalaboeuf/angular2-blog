@@ -8,7 +8,7 @@
   width : 100%;
 }
 #post-input {
-  border-right : 1px solid gray;
+  border-right : 1px solid #dfe1e3;
 }
 
 #input-title {
@@ -37,7 +37,7 @@
   padding: 10px 0px;
 }
 .border-bottom {
-  border-bottom : 1px solid gray;
+  border-bottom : 1px solid #dfe1e3;
 }
 
 #save-post{

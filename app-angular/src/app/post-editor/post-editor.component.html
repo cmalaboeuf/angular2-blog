@@ -1,11 +1,8 @@
 <div class="row">
   <div class="col-lg-12 border-bottom">
     <header id="post-url-header">
-      <h2>
-        <input id="input-title" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="Your post title"/>
-      </h2>
-      <input class="form-control" type="button" id="save-post" name="save-post" class="" value="Save" (click)="saveNewPost($event)"/>
-
+      <input tabindex="1" id="input-title" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="Your post title"/>
+      <input tabindex="3" class="btn btn-primary" type="button" id="save-post" name="save-post" value="Save" (click)="saveNewPost($event)"/>
     </header>
     </div>
 </div>
@@ -16,7 +13,7 @@
       <input class="form-control" type="text" id="post-title" [(ngModel)]="newPost.title" placeholder="title"/>
     </div>-->
     <div class="input-group full-height">
-      <textarea class="form-control" id="post-input"  [(ngModel)]="newPost.content" ></textarea>
+      <textarea tabindex="2" class="form-control" id="post-input"  [(ngModel)]="newPost.content" ></textarea>
     </div>
 
   </div>

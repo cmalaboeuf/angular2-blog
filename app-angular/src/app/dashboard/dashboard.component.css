@@ -1,0 +1,22 @@
+#dashboard-nav-bar{
+  margin : 0px;
+  padding-left : 0px;
+  padding-right: 0px;
+  border-right: 1px solid #dfe1e3;
+  background: #efeff1;
+}
+
+.nav-item {
+  margin-right:30px;
+  margin-left:10px;
+}
+.nav-item:hover{
+  background-color: #dfe1e3
+}
+
+.nav-link{
+  text-transform: capitalize;
+}
+
+#content-view{
+}
