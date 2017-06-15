@@ -1,30 +1,27 @@
 <div class="row">
-  <div  class="col-lg-6" contenteditable="true" >
-    <div class="input-group">
-      <input class="form-control" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="url"/>
+  <div class="col-lg-12 border-bottom">
+    <header id="post-url-header">
+      <input tabindex="1" id="input-title" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="Your post title"/>
+      <input tabindex="3" class="btn btn-primary" type="button" id="save-post" name="save-post" value="Save" (click)="saveNewPost($event)"/>
+    </header>
     </div>
-    <div class="input-group">
+</div>
+<div class="row full-height">
+  <div class="col-lg-6" contenteditable="true" >
+
+    <!--<div class="input-group">
       <input class="form-control" type="text" id="post-title" [(ngModel)]="newPost.title" placeholder="title"/>
+    </div>-->
+    <div class="input-group full-height">
+      <textarea tabindex="2" class="form-control" id="post-input"  [(ngModel)]="newPost.content" ></textarea>
     </div>
-    <div class="input-group">
-      <textarea class="form-control" id="post-input"  [(ngModel)]="newPost.content" ></textarea>
-    </div>
-    <div class="input-group">
-      <input class="form-control" type="button" id="save-post" name="save-post" class="" value="Save" (click)="saveNewPost($event)"/>
-    </div>
+
   </div>
   <div id="form-output" class="col-lg-6" [innerHtml]="newPost.content | markdown">
 
   </div>
-  <ng-select
-    name="list-tag"
-    [allowClear]="true"
-    [multiple]="true"
-    [items]="items"
-    [disabled]="disabled"
-    (data)="refreshValue($event)"
-    (selected)="selected($event)"
+  <!--<ng-select name="list-tag" [allowClear]="true" [multiple]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
     (removed)="removed($event)"
-    placeholder="No tag selected"></ng-select>
-
+    placeholder="No tag selected">
+  </ng-select>-->
 </div>
