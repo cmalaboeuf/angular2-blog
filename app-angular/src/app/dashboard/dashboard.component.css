@@ -11,11 +11,12 @@
   margin-left:10px;
 }
 .nav-item:hover{
-  background-color: #dfe1e3
+  /*background-color: #dfe1e3*/
 }
 
 .nav-link{
   text-transform: capitalize;
+
 }
 
 #content-view{
