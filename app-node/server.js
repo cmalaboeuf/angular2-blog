@@ -34,7 +34,7 @@ app.use('/api/v1/', passport.authenticate('jwt', { session: false }), function (
 
 var api = require('./routes/api');
 app.get('/api', function (req, res) {
-  res.json({ 'apiversion': 'v1' })
+  res.json({ 'apiversion': 'v1' });
 });
 app.use('/api/v1', api);
 

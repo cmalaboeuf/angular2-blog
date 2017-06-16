@@ -4,7 +4,7 @@ var postsApi = {
   getAll: (req, res) => {
     return Post.find(function (err, posts) {
       if (!err) {
-        return res.send({ 'posts': posts });
+        return res.send({ 'data': posts});
       } else {
         return res.send(500, err);
       }

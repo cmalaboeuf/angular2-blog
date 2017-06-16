@@ -8,7 +8,9 @@
   width : 100%;
 }
 #post-input {
+  border:none;
   border-right : 1px solid #dfe1e3;
+
 }
 
 #input-title {
@@ -32,9 +34,10 @@
   font-size:20px;
   font-weight: bold;
   display:block;
+  box-shadow : none;
 }
 #post-url-header{
-  padding: 10px 0px;
+  padding: 15px 0px;
 }
 .border-bottom {
   border-bottom : 1px solid #dfe1e3;
@@ -43,5 +46,5 @@
 #save-post{
   position: absolute;
   right: 10px;
-  top :10px;
+  top :5px;
 }
