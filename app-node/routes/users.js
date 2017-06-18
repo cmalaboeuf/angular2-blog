@@ -14,8 +14,27 @@ var userApi = {
       return res.send({'data':data});
     });
   },
-  getMe : (req,res) => {
-    return res.send({'data':req.user});
+  getMe : (req,res,next) => {
+    return res.send({"user":req.user});
+  },
+  editUser: (req, res,next) => {
+    var id = req.params.id;    
+    if(!req.body.name || ! req.body.password || !req.body.name && !req.body.password){     
+      res.status(400);
+      next();
+    }
+    else{
+      User.findOneAndUpdate({
+        _id: id
+      }, {
+        $set: {
+          name: req.body.name || '',
+          password: req.body.password || '',  
+        }}).exec();
+      res.status(200);
+      return res.send({});
+      
+    }
   }
 };
 module.exports = userApi;
