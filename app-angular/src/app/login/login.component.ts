@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(authservice:AuthService,router:Router) {
     this.myservice = authservice;
     this.usercreds = {
-      name: '',
+      email: '',
       password: ''
     }
     this.router = router;

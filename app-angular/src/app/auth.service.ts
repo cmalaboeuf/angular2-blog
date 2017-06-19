@@ -15,7 +15,7 @@ export class AuthService {
   login(user):any {
     var headers = new Headers();
     var creds = {
-      name : user.name,
+      email : user.email,
       password: user.password
     };
     headers.append('Content-Type', 'application/json');
@@ -43,7 +43,7 @@ export class AuthService {
 
   register(user):any {
     return new Promise(resolve => {
-      var creds = "name=" + user.name + "&password=" + user.password;
+      var creds = "email=" + user.email + "&password=" + user.password;
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       this.http.post('http://localhost/api/adduser', creds, { headers: headers }).subscribe(data => {
