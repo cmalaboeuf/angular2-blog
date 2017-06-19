@@ -5,7 +5,7 @@ var jwt = require('jwt-simple');
 var auth = {
   authenticate: function (req, res) {
     User.findOne({
-      name: req.body.name
+      email: req.body.email
     }, function (err, user) {
       if (err) throw err;
 
@@ -26,18 +26,20 @@ var auth = {
     });
   },
   addNew: function (req, res) {
-    if ((!req.body.name) || (!req.body.password)) {
-      res.json({ success: false, msg: 'Enter all values' });
+    if ((!req.body.email) || (!req.body.password || (!req.body.name))|| (!req.body.firstname) ){
+      res.status(400).send({ success: false, msg: 'Enter all values' });
     }
     else {
       var newUser = User({
-        name: req.body.name,
+        email: req.body.email,
+        firstname : req.body.firstname,
+        name: req.body.name ,
         password: req.body.password
       });
 
       newUser.save(function (err) {
         if (err) {
-          res.json({ success: false, msg: 'Failed to save' });
+          res.json({ err,success: false, msg: 'Failed to save' });
         }
 
         else {
@@ -56,8 +58,6 @@ var auth = {
       return res.json({ success: false, msg: 'No header' });
     }
   }
-
-
-}
+};
 
 module.exports = auth;

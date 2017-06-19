@@ -28,8 +28,12 @@ var userApi = {
         _id: id
       }, {
         $set: {
+          email: req.body.email,
+          firstname : req.body.firstname,
           name: req.body.name ,
-          password: req.body.password ,
+          password: req.body.password,
+          profile_image :req.body.profile_image,
+          facebook_url : req.body.facebook_url
         }}).exec();
       res.status(200);
       return res.send({});
