@@ -14,12 +14,12 @@ var userApi = {
       return res.send({'data':data});
     });
   },
-  getMe : (req,res,next) => {
-    return res.send({"user":req.user});
+  getMe : (req,res) => {
+    return res.send({'user':req.user});
   },
   editUser: (req, res,next) => {
-    var id = req.params.id;    
-    if(!req.body.name || ! req.body.password || !req.body.name && !req.body.password){     
+    var id = req.params.id;
+    if(!req.body.name){
       res.status(400);
       next();
     }
@@ -28,12 +28,12 @@ var userApi = {
         _id: id
       }, {
         $set: {
-          name: req.body.name || '',
-          password: req.body.password || '',  
+          name: req.body.name ,
+          password: req.body.password ,
         }}).exec();
       res.status(200);
       return res.send({});
-      
+
     }
   }
 };
