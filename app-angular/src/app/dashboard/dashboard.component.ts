@@ -15,16 +15,21 @@ import { User} from '../user/Model/User';
 })
 export class DashboardComponent implements OnInit {
 
-  private user:User;
-  constructor(private authService : AuthService, private router:Router,private userService :UserService) {
-
-  }
+  public user:User;
+  constructor(private authService : AuthService, private router:Router,private userService :UserService) {}
 
   ngOnInit() {
     this.userService.getMe().subscribe(res=>{
-      console.log(res);
-      return this.user = res['data'];
+      console.log(res['data'] as User);
+      this.user = res['data'] as User;
     });
+  }
+
+  goToUser(id){
+    console.log(this.user);
+    if(this.user !== null){
+       this.router.navigate(['/dashboard/user', id]);
+    }
   }
 
   logout(){

@@ -10,7 +10,7 @@ var userApi = {
     });
   },
   getById : (req,res)=> {
-    User.findById({ '_id': req.params.id },(err,data)=>{
+    User.findById({ '_id': req.params.id },{password:0},(err,data)=>{
       return res.send({'data':data});
     });
   },

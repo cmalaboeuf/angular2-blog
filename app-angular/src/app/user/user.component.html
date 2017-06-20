@@ -1,3 +1,29 @@
-<p>
-  user works!
-</p>
+<div class="row">
+  <div class="col-lg-3" *ngIf="currentUser">
+    <div class="form-group">
+      <label for="formName">Firstname</label>
+      <input type="text" id="formName" name="name"  [(ngModel)]="currentUser.firstname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formUrl">Name</label>
+      <input type="text" id="formUrl" [(ngModel)]="currentUser.name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formDescription">email</label>
+      <input type="text" id="formDescription" [(ngModel)]="currentUser.email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formDescription">password</label>
+      <input type="text" id="formDescription" [(ngModel)]="currentUser.password" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formDescription">Image</label>
+      <input type="text" id="formDescription" [(ngModel)]="currentUser.profile_image" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="formDescription">Facebook</label>
+      <input type="text" id="formDescription" [(ngModel)]="currentUser.facebook_url" class="form-control">
+    </div>
+    <input type="submit" class="btn btn-primary" (click)="saveCurrentUser()">
+  </div>
+</div>

@@ -20,8 +20,8 @@ export class UserService {
       .map(res => res.json());
   }
 
-  public getOne(data) {
-    return this.http.post(this.baseUrl + "/users",data.id,null)
+  public getOne(id) {
+    return this.http.get(this.baseUrl + "/users/" + id)
       .map(res => res.json());
   }
 
@@ -32,7 +32,7 @@ export class UserService {
 
 
   public update(data){
-    return this.http.put(this.baseUrl + '/users' + data._id,data).
+    return this.http.put(this.baseUrl + '/users/' + data._id,data).
     map(res=>res.json());
   }
 

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   clickLogin(usercreds) {
     this.myservice.login(usercreds).then(data => {
       if (data){
-        this.router.navigate(["dashboard/home"]);
+        this.router.navigate(["dashboard/newpost"]);
         return;
       }
     });

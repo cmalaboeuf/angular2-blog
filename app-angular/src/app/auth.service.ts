@@ -43,7 +43,7 @@ export class AuthService {
 
   register(user):any {
     return new Promise(resolve => {
-      var creds = "email=" + user.email + "&password=" + user.password;
+      var creds = "name=" + user.name + "&password=" + user.password;
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       this.http.post('http://localhost/api/adduser', creds, { headers: headers }).subscribe(data => {
