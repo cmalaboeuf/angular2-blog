@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
 import { SelectModule } from 'ng2-select-compat';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       {path : 'home', component : DashboardComponent, canActivateChild: [AuthGuard]},
+      {path : 'user', component : UserComponent, canActivateChild: [AuthGuard]},
       {path : 'newpost', component : PostEditorComponent, canActivateChild: [AuthGuard]},
       {path : 'tageditor', component : TagEditorComponent, canActivateChild: [AuthGuard]},
       {path : 'content',component: ContentComponent,canActivateChild: [AuthGuard]}
@@ -49,7 +51,8 @@ const routes: Routes = [
     MarkdownPipe,
     TagEditorComponent,
     TagComponent,
-    ContentComponent
+    ContentComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

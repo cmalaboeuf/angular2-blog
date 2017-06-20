@@ -14,11 +14,16 @@ export class TagService {
     return this.http.get(this.baseUrl + "/tags")
       .map(res => res.json());
   }
+  public getOne(data) {
+    return this.http.post(this.baseUrl + "/tags",data.id,null)
+      .map(res => res.json());
+  }
 
   public add(data) {
     return this.http.post(this.baseUrl + "/tags",data)
       .map(res => res.json());
   }
+
 
   public update(data){
     return this.http.put(this.baseUrl + '/tags/' + data._id,data).

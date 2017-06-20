@@ -15,7 +15,7 @@ var userApi = {
     });
   },
   getMe : (req,res) => {
-    return res.send({'user':req.user});
+    return res.send({data:req.user});
   },
   editUser: (req, res,next) => {
     var id = req.params.id;
