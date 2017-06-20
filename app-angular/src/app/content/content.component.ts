@@ -11,7 +11,7 @@ export class ContentComponent implements OnInit {
   private postService : PostService;
   private currentPost:Post;
 
-  public posts:Array<Post>;
+  public posts:Array<Post> = new Array();
   constructor(_postService :PostService) {
     this.postService = _postService;
     this.posts = new Array();
@@ -20,7 +20,7 @@ export class ContentComponent implements OnInit {
 
   getPosts(){
     return this.postService.getAll().subscribe(res => {
-      return this.posts = res["posts"];
+      return this.posts = res["posts"] || [];
     });
   }
   onClick(post:Post){
