@@ -26,5 +26,6 @@ router.delete('/tags/:id',tags.deleteTag);
 router.get('/users/me', users.getMe);
 router.get('/users',users.getAll);
 router.get('/users/:id',users.getById);
+router.put('/users/:id',users.editUser);
 
 module.exports = router;

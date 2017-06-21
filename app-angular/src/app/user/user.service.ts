@@ -1,32 +1,38 @@
 import { Injectable,Output,EventEmitter } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Tag } from './Model/Tag';
+import { User } from './Model/User';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class TagService {  
+export class UserService {
   constructor(private http: Http) {
     this.http = http;
   }
   private baseUrl = "/api/v1"
-  getAll(): Observable<Tag> {
-    return this.http.get(this.baseUrl + "/tags")
+  getAll(): Observable<User> {
+    return this.http.get(this.baseUrl + "/users")
       .map(res => res.json());
   }
-  public getOne(data) {
-    return this.http.post(this.baseUrl + "/tags",data.id,null)
+
+  getMe(): Observable<User> {
+    return this.http.get(this.baseUrl + "/users/me")
+      .map(res => res.json());
+  }
+
+  public getOne(id) {
+    return this.http.get(this.baseUrl + "/users/" + id)
       .map(res => res.json());
   }
 
   public add(data) {
-    return this.http.post(this.baseUrl + "/tags",data)
+    return this.http.post(this.baseUrl + "/users",data)
       .map(res => res.json());
   }
 
 
   public update(data){
-    return this.http.put(this.baseUrl + '/tags/' + data._id,data).
+    return this.http.put(this.baseUrl + '/users/' + data._id,data).
     map(res=>res.json());
   }
 

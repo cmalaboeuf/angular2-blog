@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
-import { UserpageComponent } from './userpage/userpage.component';
 import { AuthService} from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,13 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
 import { SelectModule } from 'ng2-select-compat';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: 'blog', component : BlogComponent},
-  { path: 'userpage', component : UserpageComponent},// must be a child of dashboard
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
-      {path : 'home', component : DashboardComponent, canActivateChild: [AuthGuard]},
+      {path : 'user/:id', component : UserComponent, canActivateChild: [AuthGuard]},
       {path : 'newpost', component : PostEditorComponent, canActivateChild: [AuthGuard]},
       {path : 'tageditor', component : TagEditorComponent, canActivateChild: [AuthGuard]},
       {path : 'content',component: ContentComponent,canActivateChild: [AuthGuard]}
@@ -42,18 +41,19 @@ const routes: Routes = [
     AppComponent,
     PostComponent,
     LoginComponent,
-    UserpageComponent,
     DashboardComponent,
     BlogComponent,
     PostEditorComponent,
     MarkdownPipe,
     TagEditorComponent,
     TagComponent,
-    ContentComponent
+    ContentComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),

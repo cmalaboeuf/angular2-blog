@@ -15,7 +15,7 @@ export class AuthService {
   login(user):any {
     var headers = new Headers();
     var creds = {
-      name : user.name,
+      email : user.email,
       password: user.password
     };
     headers.append('Content-Type', 'application/json');
