@@ -24,6 +24,20 @@
       <label for="formDescription">Facebook</label>
       <input type="text" id="formDescription" [(ngModel)]="currentUser.facebook_url" class="form-control">
     </div>
-    <input type="submit" class="btn btn-primary" (click)="saveCurrentUser()">
+    <form [formGroup]="passwordGroup" (ngSubmit)="updatePassword(passwordGroup.value)">
+      <div class="form-group">
+        <label for="formDescription">New password</label>
+        <input type="password" id="formDescription" [formControl]="passwordGroup.controls['newPassword']" class="form-control">
+        <div *ngIf="passwordGroup.controls['newPassword'].touched && passwordGroup.controls['newPassword2'].touched && passwordGroup.controls['newPassword'].value !== passwordGroup.controls['newPassword2'].value" class="alert alert-danger">Password are different</div>
+      </div>
+      <div class="form-group">
+        <label for="formDescription">Verify New password</label>
+        <input type="password" id="formDescription"  [formControl]="passwordGroup.controls['newPassword2']" class="form-control">
+      </div>
+      <input type="submit" class="btn btn-warning" value="change password">
+    </form>
+  </div>
+  <div class="offset-lg-7 col-lg-2">
+    <input type="submit" class="btn btn-primary" (click)="saveCurrentUser()" value="save">
   </div>
 </div>
