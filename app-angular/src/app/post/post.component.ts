@@ -20,7 +20,7 @@ export class PostComponent implements OnInit {
   constructor(private postService: PostService) { }
   getPosts(){
     return this.postService.getAllUnauthenticated().subscribe(res => {
-      return this.posts = res['posts'];
+      return this.posts = res['data'];
     });
   }
 

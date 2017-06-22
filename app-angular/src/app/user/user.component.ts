@@ -34,7 +34,6 @@ export class UserComponent implements OnInit {
   }
 
   saveCurrentUser(){
-    // console.log(this.currentUser);
     this.userService.update(this.currentUser).subscribe(res=>{return this.currentUser});
   }
 

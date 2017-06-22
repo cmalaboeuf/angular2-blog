@@ -20,13 +20,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getMe().subscribe(res=>{
-      console.log(res['data'] as User);
       this.user = res['data'] as User;
     });
   }
 
   goToUser(id){
-    console.log(this.user);
     if(this.user !== null){
        this.router.navigate(['/dashboard/user', id]);
     }

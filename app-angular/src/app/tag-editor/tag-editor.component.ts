@@ -55,7 +55,6 @@ export class TagEditorComponent implements OnInit {
 
    onNotify(tag:Tag):void {
     this.isUpdate = true;
-    console.log(this.isUpdate);
     this.currentTag = tag;
   }
 }
