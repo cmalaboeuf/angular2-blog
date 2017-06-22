@@ -11,6 +11,8 @@ import {FormGroup, FormBuilder,Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   public myservice:AuthService;
   public usercreds: FormGroup;
+  public animShake:boolean = false;
+
   constructor(authservice:AuthService,private router:Router,fb:FormBuilder) {
     this.myservice = authservice;
     this.usercreds = fb.group({
@@ -25,10 +27,16 @@ export class LoginComponent implements OnInit {
       password:this.usercreds.controls.password.value,
     }
     this.myservice.login(user).then(data => {
+      console.log(data);
       if (data){
         this.router.navigate(["dashboard/newpost"]);
         return;
       }
+    },err=>{
+      this.animShake= true;
+      setTimeout(()=>{
+        this.animShake = false;
+      },820);
     });
   }
   register() {

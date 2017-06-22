@@ -1,15 +1,22 @@
 <div class="container">
-    <form [formGroup]="usercreds" class="form-signin" (ngSubmit)="clickLogin(usercreds.value)" >
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input [formControl]="usercreds.controls['email']" [ngClass]="{'has-error':!usercreds.controls['email'].valid && usercreds.controls['email'].touched}" type="email" id="inputEmail" class="form-control" placeholder="Email" name="email"  [formControl]="usercreds.controls['email']" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input  [formControl]="usercreds.controls['password']" [ngClass]="{'has-error':!usercreds.controls['password'].valid && usercreds.controls['password'].touched}" type="password" id="inputPassword" class="form-control" name="password" placeholder="Password"   [formControl]="usercreds.controls['password']" required>
-        <div class="checkbox">
-          <label>
+  <form [formGroup]="usercreds" class="form-signin" (ngSubmit)="clickLogin(usercreds.value)" [ngClass]="{'shake-login':animShake}">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <div class="form-group" [ngClass]="{'has-danger':!usercreds.controls['email'].valid && usercreds.controls['email'].touched}">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input [formControl]="usercreds.controls['email']" type="email" id="inputEmail" class="form-control" placeholder="Email" name="email" [formControl]="usercreds.controls['email']"
+        required autofocus>
+    </div>
+    <div class="form-group" [ngClass]="{'has-danger':!usercreds.controls['password'].valid && usercreds.controls['password'].touched}">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input [formControl]="usercreds.controls['password']"
+        type="password" id="inputPassword" class="has-danger form-control" name="password" placeholder="Password" [formControl]="usercreds.controls['password']"
+        required>
+    </div>
+    <div class="checkbox">
+      <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
 </div>

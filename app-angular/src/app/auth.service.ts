@@ -19,14 +19,14 @@ export class AuthService {
       password: user.password
     };
     headers.append('Content-Type', 'application/json');
-    return new Promise(resolve => {
+    return new Promise((resolve,reject) => {
       this.http.post('http://localhost/api/authenticate', creds, { headers }).subscribe(data => {
         if (data.json().success) {
           window.localStorage.setItem('currentUser', data.json().token);
           this.isLoggedin = true;
+          resolve(this.isLoggedin);
         }
-        resolve(this.isLoggedin);
-      });
+      }, err=>{reject(err)});
     });
   }
 
