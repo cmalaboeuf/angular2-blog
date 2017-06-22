@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   clickLogin() {
+    this.animShake = false;
     let user:Object = {
       email:this.usercreds.controls.email.value,
       password:this.usercreds.controls.password.value,

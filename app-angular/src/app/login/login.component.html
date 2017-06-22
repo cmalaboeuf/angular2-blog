@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="usercreds" class="form-signin" (ngSubmit)="clickLogin(usercreds.value)" [ngClass]="{'shake-login':animShake}">
+  <form id="form-login" [formGroup]="usercreds" class="form-signin card" (ngSubmit)="clickLogin(usercreds.value)" [ngClass]="{'shake-login':animShake}">
     <h2 class="form-signin-heading">Please sign in</h2>
     <div class="form-group" [ngClass]="{'has-danger':!usercreds.controls['email'].valid && usercreds.controls['email'].touched}">
       <label for="inputEmail" class="sr-only">Email address</label>
