@@ -5,8 +5,8 @@ body {
 }
 
 .form-signin {
-  top:50vh;
-  transform: translateY(-50%);
+  top:35vh;
+  /*transform: translateY(-50%);*/
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
