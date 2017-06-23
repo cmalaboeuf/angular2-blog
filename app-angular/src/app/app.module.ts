@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import { LoginComponent } from './login/login.component';
-import { AuthService} from './auth.service';
+import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog.component';
@@ -25,9 +25,9 @@ import { SelectModule } from 'ng2-select-compat';
 // import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path : 'dashboard',loadChildren:'app/dashboard/dashboard.module#DashboardModule'}
-  // { path: 'blog', component : BlogComponent},
+  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule',canActivate: [AuthGuard] },
+  { path: '', component: BlogComponent },
   // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
   //   children: [
   //     {path : 'user/:id', component : UserComponent, canActivateChild: [AuthGuard]},
@@ -37,7 +37,7 @@ const routes: Routes = [
   //   ] },//find a way to unified dashboard && admin && ..
   // { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard]},
   // { path: 'post',component: PostComponent },//must be a child of blog
-  // { path: 'login',component: LoginComponent },//must be a child of blog
+  { path: 'login', component: LoginComponent }//must be a child of blog
   // { path: '**',component:LoginComponent}
 
 ];
@@ -60,7 +60,7 @@ const routes: Routes = [
   providers: [
     AuthGuard,
     AuthService,
-    {provide: RequestOptions, useClass: CustomRequestOptions}
+    { provide: RequestOptions, useClass: CustomRequestOptions }
   ],
   bootstrap: [AppComponent]
 })
