@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostEditorComponent} from './post-editor/post-editor.component';
 import {ViewEncapsulation} from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router} from '@angular/router';
 import { UserService} from './user/user.service';
 import { User} from './user/Model/User';

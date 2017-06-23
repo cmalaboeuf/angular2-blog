@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Post } from './Model/Post';
+import { Post } from 'app/blog/post/Model/Post';
 import { Observable } from 'rxjs/Observable';
 
 let posts = [];
