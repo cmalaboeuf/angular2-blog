@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {PostEditorComponent} from '../post-editor/post-editor.component';
+import {PostEditorComponent} from './post-editor/post-editor.component';
 import {ViewEncapsulation} from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router} from '@angular/router';
-import { UserService} from '../user/user.service';
-import { User} from '../user/Model/User';
+import { UserService} from './user/user.service';
+import { User} from './user/Model/User';
 
 @Component({
   selector: 'app-dashboard',
