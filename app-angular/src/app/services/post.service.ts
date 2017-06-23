@@ -24,6 +24,11 @@ export class PostService {
       .map(res => res.json());
   }
 
+  getByIdUnauthenticated(id): Observable<Post> {
+    return this.http.get(this.baseUrl + '/posts/'+ id)
+      .map(res => res.json());
+  }
+
   public add(data) {
     return this.http.post(this.baseUrlAuth + '/posts',data)
       .map(res => res.json());

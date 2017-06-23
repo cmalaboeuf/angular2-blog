@@ -16,6 +16,7 @@ import { AuthService } from '../services/auth.service';
 
 import { BlogRoutingModule } from './blog-routing.module';
 import { PostComponent } from './post/post.component';
+import { PostDetailComponent } from './post/post-detail.component';
 import { BlogComponent } from './blog.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { BlogComponent } from './blog.component';
   declarations: [
     MarkdownPipe,
     PostComponent,
+    PostDetailComponent,
     BlogComponent
     ],
   providers: [

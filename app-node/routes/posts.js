@@ -11,9 +11,9 @@ var postsApi = {
     });
   },
   getById: (req, res) => {
-    return Post.findOne(function (err, posts) {
+    return Post.findOne({ '_id': req.params.id },function (err, post) {
       if (!err) {
-        return res.json(posts);
+        return res.json({'data': post});
       } else {
         return res.send(500, err);
       }
