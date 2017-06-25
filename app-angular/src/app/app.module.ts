@@ -15,20 +15,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomRequestOptions } from './my-header';
 import { SelectModule } from 'ng2-select-compat';
 
-// import { PostEditorComponent } from './post-editor/post-editor.component';
-// import { MarkdownPipe } from './pipe/markdown';
-// import { TagEditorComponent } from './tag-editor/tag-editor.component';
-// import { TagComponent } from './tag/tag.component';
-// import { ContentComponent } from './content/content.component';
-
-// import { UserComponent } from './user/user.component';
-
 const routes: Routes = [
-  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule',canActivate: [AuthGuard] },
   { path: '',loadChildren: 'app/blog/blog.module#BlogModule' },
-  { path: 'login', component: LoginComponent },//must be a child of blog
-  // { path: '**',component:BlogComponent}
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule',canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent }
 ];
 @NgModule({
   declarations: [

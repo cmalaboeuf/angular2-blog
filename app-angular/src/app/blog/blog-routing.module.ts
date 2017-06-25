@@ -7,8 +7,8 @@ import { PostDetailComponent } from './post/post-detail.component';
 import { PostComponent } from './post/post.component';
 const routes: Routes = [
   { path: '', component: BlogComponent, children: [
-    { path : "ia", component: PostComponent },
-    { path : ":slug", component: PostDetailComponent }
+    { path : ":slug", component: PostDetailComponent },
+    { path : "", component: PostComponent }   
     ]
   }
 ];
