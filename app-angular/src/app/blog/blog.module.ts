@@ -11,7 +11,6 @@ import { SelectModule } from 'ng2-select-compat';
 /**/
 import { CustomRequestOptions } from '../my-header';
 import { AuthGuard } from '../auth.guard';
-import { MarkdownPipe } from '../pipe/markdown';
 import { AuthService } from '../services/auth.service';
 
 import { BlogRoutingModule } from './blog-routing.module';
@@ -32,7 +31,6 @@ import { BlogComponent } from './blog.component';
   ],
    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
-    MarkdownPipe,
     PostComponent,
     PostDetailComponent,
     BlogComponent

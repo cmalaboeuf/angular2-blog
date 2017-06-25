@@ -11,19 +11,24 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { MarkdownPipe } from './pipe/markdown';
 
 import { CustomRequestOptions } from './my-header';
 import { SelectModule } from 'ng2-select-compat';
 
 const routes: Routes = [
-  { path: '',loadChildren: 'app/blog/blog.module#BlogModule' },
   { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule',canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '',loadChildren: 'app/blog/blog.module#BlogModule' },    
+  { path: '**', component:PageNotFoundComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PostEditorComponent } from './post-editor/post-editor.component';
 import { DashboardComponent } from './dashboard.component';
-import { MarkdownPipe } from '../pipe/markdown';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
