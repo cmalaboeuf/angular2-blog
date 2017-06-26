@@ -15,7 +15,7 @@
     "express": "^4.0.0",
     "express-session": "^1.11.3",
     "jwt-simple": "^0.4.1",
-    "mongoose": "^4.7.0",
+    "mongoose": "^4.11.0",
     "mysql": "^2.7.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",

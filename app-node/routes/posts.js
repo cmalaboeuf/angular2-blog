@@ -1,19 +1,32 @@
 var Post = require('../models/post.js');
-
+var mongoose = require('mongoose');
 var postsApi = {
   getAll: (req, res) => {
-    return Post.find(function (err, posts) {
+    return mongoose.connection.db.collection('posts').aggregate([{
+      $lookup: {
+        from: 'tags',
+        localField:'tags',
+        foreignField:'_id',
+        as : 'tags'
+      }
+    }], (err, posts) => {
       if (!err) {
-        return res.send({ 'data': posts});
+        return res.send({
+          'data': posts
+        });
       } else {
         return res.send(500, err);
       }
     });
   },
   getById: (req, res) => {
-    return Post.findOne({ '_id': req.params.id },function (err, post) {
+    return Post.findOne({
+      '_id': req.params.id
+    }, function (err, post) {
       if (!err) {
-        return res.json({'data': post});
+        return res.json({
+          'data': post
+        });
       } else {
         return res.send(500, err);
       }
@@ -24,7 +37,7 @@ var postsApi = {
       title: req.body.title,
       url: req.body.url,
       content: req.body.content,
-      tags : req.body.tags,
+      tags: req.body.tags,
       date: new Date(Date.now())
     });
 
@@ -49,8 +62,9 @@ var postsApi = {
         url: req.body.url || '',
         content: req.body.content || '',
         date: new Date(Date.now()),
-        tags : req.body.tags,
-      }}).exec();
+        tags: req.body.tags,
+      }
+    }).exec();
     res.status(200);
     return res.send();
   },
