@@ -10,10 +10,8 @@ import { AuthGuard } from '../auth.guard';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'list', pathMatch: 'full'},
-  {
-    path: '', component: DashboardComponent, children: [
-      { path: 'newPost', component: PostEditorComponent },
+  { path: '', redirectTo: 'newpost', pathMatch: 'full'},
+  { path: '', component: DashboardComponent, children: [
       { path: 'user/:id', component: UserComponent, canActivateChild: [AuthGuard] },
       { path: 'newpost', component: PostEditorComponent, canActivateChild: [AuthGuard] },
       { path: 'tageditor', component: TagEditorComponent, canActivateChild: [AuthGuard] },
