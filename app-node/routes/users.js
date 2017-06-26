@@ -15,7 +15,10 @@ var userApi = {
     });
   },
   getMe : (req,res) => {
-    return res.send({data:req.user});
+     User.findById({ '_id': req.user._id },{password:0},(err,data)=>{
+      return res.send({'data':data});
+    });
+    
   },
   editUser: (req, res,next) => {
     var id = req.params.id;

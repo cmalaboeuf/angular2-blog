@@ -8,6 +8,12 @@ var postsApi = {
         localField:'tags',
         foreignField:'_id',
         as : 'tags'
+      },
+       $lookup: {
+        from: 'users',
+        localField:'author',
+        foreignField:'_id',
+        as : 'author'
       }
     }], (err, posts) => {
       if (!err) {
@@ -38,7 +44,8 @@ var postsApi = {
       url: req.body.url,
       content: req.body.content,
       tags: req.body.tags,
-      date: new Date(Date.now())
+      date: new Date(Date.now()),
+      author: req.body.author
     });
 
     post.save(function (err) {
@@ -63,6 +70,7 @@ var postsApi = {
         content: req.body.content || '',
         date: new Date(Date.now()),
         tags: req.body.tags,
+        author : req.body.user
       }
     }).exec();
     res.status(200);

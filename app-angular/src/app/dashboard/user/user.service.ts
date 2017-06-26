@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
+  public me:User;
   constructor(private http: Http) {
     this.http = http;
   }
@@ -17,7 +18,7 @@ export class UserService {
 
   getMe(): Observable<User> {
     return this.http.get(this.baseUrl + "/users/me")
-      .map(res => res.json());
+      .map(res => this.me = res.json());
   }
 
   public getOne(id) {

@@ -3,6 +3,7 @@ import {Post} from 'app/blog/post/Model/Post';
 import {PostService} from 'app/services/post.service';
 import {ViewEncapsulation} from '@angular/core';
 import { TagService } from '../tag/tag.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-post-editor',
@@ -16,7 +17,7 @@ import { TagService } from '../tag/tag.service';
 export class PostEditorComponent implements OnInit {
 
   private newPost : Post = new Post();
-  constructor(private postService: PostService, private tagService : TagService) {/**/}
+  constructor(private postService: PostService, private tagService : TagService,private userService:UserService) {/**/}
 
   ngOnInit() {
    this.tagService.getAll().subscribe(res=>{
@@ -27,6 +28,7 @@ export class PostEditorComponent implements OnInit {
   }
 
   saveNewPost(event){
+    this.newPost.author = new Array(this.userService.me['data']._id);
     this.postService.add(this.newPost).subscribe(res => {
       return this.newPost;
     });

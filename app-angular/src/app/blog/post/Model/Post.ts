@@ -6,4 +6,5 @@ export class Post {
     public content: string;
     public date:string;
     public tags : Array<any>;
-}
+    public author : Array<any>;
+};
