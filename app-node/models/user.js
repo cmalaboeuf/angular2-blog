@@ -67,6 +67,8 @@ UserSchema.pre('findOneAndUpdate', function(next) {
         next();
       });
     });
+  }else{
+    next();
   }
 });
 

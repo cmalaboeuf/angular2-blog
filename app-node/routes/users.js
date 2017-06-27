@@ -1,8 +1,9 @@
 var User = require('../models/user.js');
+var winston = require ('winston');
 
 var userApi = {
   getAll : (req,res) => {
-    User.find((err,data)=>{
+    User.find({},{password:0},(err,data)=>{
       if(!err)
         return res.send({data});
       else
@@ -15,10 +16,10 @@ var userApi = {
     });
   },
   getMe : (req,res) => {
-     User.findById({ '_id': req.user._id },{password:0},(err,data)=>{
+    User.findById({ '_id': req.user._id },{password:0},(err,data)=>{
       return res.send({'data':data});
     });
-    
+
   },
   editUser: (req, res,next) => {
     var id = req.params.id;
@@ -27,20 +28,19 @@ var userApi = {
       next();
     }
     else{
-      User.findOneAndUpdate({
+      winston.info('start');
+      User.update({
         _id: id
-      }, {
-        $set: {
-          email: req.body.email,
-          firstname : req.body.firstname,
-          name: req.body.name ,
-          password: req.body.password,
-          profile_image :req.body.profile_image,
-          facebook_url : req.body.facebook_url
-        }}).exec();
-      res.status(200);
-      return res.send({});
+      },req.body
+      ,{new :true},(err)=>{
+        if(err){
+          return res.status(500).send({err});
+        }else{
+          res.status(200);
+          return res.send({});
+        }
 
+      });
     }
   }
 };
