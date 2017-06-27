@@ -1,13 +1,13 @@
-FROM node:argon
+FROM node:8
 
 EXPOSE 8888
 
-VOLUME /app 
+VOLUME /app
 
 WORKDIR /app
 RUN npm install -g supervisor
 #If you have problem with links on windows use this intead of npm install
-#RUN npm install 
+#RUN npm install
 #CMD npm install --no-bin-links && node server.js
 COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod +x /root/entrypoint.sh
