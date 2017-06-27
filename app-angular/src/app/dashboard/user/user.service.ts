@@ -36,26 +36,4 @@ export class UserService {
     return this.http.put(this.baseUrl + '/users/' + data._id,data).
     map(res=>res.json());
   }
-
-  // put(data) {
-  //   return new Promise(resolve => {
-  //     let index = tags.findIndex(todo => todo._id === data._id);
-  //     tags[index].title = data.title;
-  //     resolve(data);
-  //   });
-  // }
-
-  // delete(id) {
-  //   return new Promise(resolve => {
-  //     let index = tags.findIndex(todo => todo._id === id);
-  //     tags.splice(index, 1);
-  //     resolve(true);
-  //   });
-  // }
-
-  // deleteCompleted() {
-  //   return new Promise(resolve => {
-  //     resolve(tags);
-  //   });
-  // }
 }
