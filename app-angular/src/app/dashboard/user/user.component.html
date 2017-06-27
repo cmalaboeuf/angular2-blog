@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-3" *ngIf="currentUser">
+  <div class="offset-lg-1 col-lg-3" *ngIf="currentUser">
     <div class="form-group">
       <label for="formName">Firstname</label>
       <input type="text" id="formName" name="name"  [(ngModel)]="currentUser.firstname" class="form-control">
@@ -13,10 +13,6 @@
       <input type="text" id="formDescription" [(ngModel)]="currentUser.email" class="form-control">
     </div>
     <div class="form-group">
-      <label for="formDescription">password</label>
-      <input type="text" id="formDescription" [(ngModel)]="currentUser.password" class="form-control">
-    </div>
-    <div class="form-group">
       <label for="formDescription">Image</label>
       <input type="text" id="formDescription" [(ngModel)]="currentUser.profile_image" class="form-control">
     </div>
@@ -24,6 +20,16 @@
       <label for="formDescription">Facebook</label>
       <input type="text" id="formDescription" [(ngModel)]="currentUser.facebook_url" class="form-control">
     </div>
+  </div>
+  <div class="offset-lg-6 col-lg-2">
+    <button type="submit" class="btn btn-primary"  [ngClass]="{'btn-danger':error}" (click)="saveCurrentUser()" value="save">Save&nbsp;<i [ngClass]="{'fa fa-spinner fa-spin':sending}"></i></button>
+  </div>
+</div>
+<div class="row">
+    <hr class="col-lg-12">
+</div>
+<div class="row">
+  <div class="offset-lg-1 col-lg-3">
     <form [formGroup]="passwordGroup" (ngSubmit)="updatePassword(passwordGroup.value)">
       <div class="form-group">
         <label for="formDescription">New password</label>
@@ -36,8 +42,5 @@
       </div>
       <input type="submit" class="btn btn-warning" value="change password">
     </form>
-  </div>
-  <div class="offset-lg-7 col-lg-2">
-    <input type="submit" class="btn btn-primary" (click)="saveCurrentUser()" value="save">
   </div>
 </div>

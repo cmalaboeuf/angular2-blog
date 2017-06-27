@@ -7,13 +7,17 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css'],
+  styleUrls: ['./user.component.scss'],
   providers : [UserService]
 })
 
 export class UserComponent implements OnInit {
   private id: string;
   private sub: any;
+
+
+  private sending:boolean =false;
+  private error:boolean = false;
 
   passwordGroup : FormGroup;
   constructor(private route: ActivatedRoute,private userService :UserService, fb:FormBuilder) {
@@ -34,7 +38,20 @@ export class UserComponent implements OnInit {
   }
 
   saveCurrentUser(){
-    this.userService.update(this.currentUser).subscribe(res=>{return this.currentUser});
+    this.error = false;
+    this.sending = true;
+    this.userService
+      .update(this.currentUser)
+      .subscribe(
+        res=>{
+          setTimeout(()=>{this.sending = false},200);
+          return this.currentUser
+        },
+        err=>{
+          this.sending= false;
+          this.error= true;
+        }
+      );
   }
 
   updatePassword(){
