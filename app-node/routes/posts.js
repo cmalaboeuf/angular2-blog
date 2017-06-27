@@ -2,7 +2,9 @@ var Post = require('../models/post.js');
 var mongoose = require('mongoose');
 var postsApi = {
   getAll: (req, res) => {
-    return mongoose.connection.db.collection('posts').aggregate([{
+    return mongoose.connection.db.collection('posts').aggregate([
+      //find a way to delete password field in response
+      {      
       $lookup: {
         from: 'tags',
         localField:'tags',
