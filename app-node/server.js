@@ -8,10 +8,19 @@ var client = redis.createClient();
 var app = express();
 var passport = require('passport');
 var winston = require('winston');
+var nconf = require('nconf');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://mongodb/myDatabase');
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+var config = require('./config/'+ process.env.NODE_ENV + ".json")
 
+let options = { 
+  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
+  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } 
+};
+
+
+mongoose.connect(config.database,options);
 
 app.use(cors());
 app.use(session({
@@ -45,3 +54,5 @@ app.use('/api', api_auth);
 app.listen(8888, function () {
   winston.log('App Started on PORT 8888');
 });
+
+module.exports = app;
