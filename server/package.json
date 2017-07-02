@@ -1,10 +1,17 @@
 {
-  "name": "Node-Session-Redis",
-  "version": "0.0.1",
+  "name": "app-angular",
+  "version": "0.0.0",
+  "license": "MIT",
+  "angular-cli": {},
   "scripts": {
-    "start": "node ./bin",
-    "test": "mocha --timeout 10000"
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "ng test",
+    "server:test": "cd server && mocha --timeout 10000",
+    "pree2e": "webdriver-manager update",
+    "e2e": "protractor"
   },
+  "private": true,
   "dependencies": {
     "async": "^1.2.1",
     "bcrypt": "^0.8.5",

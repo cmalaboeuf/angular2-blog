@@ -20,12 +20,13 @@ services:
       file: docker-compose-base.yml
       service: mean-service
     build:
-      context: ./node
+      context: ./server
     hostname: node
     ports:
       - "8888:8888"
     volumes:
-      - "./app-node:/app"
+      - "./server:/app"
+      - /app/node_modules/
     links:
      - nginx
      - mongodb

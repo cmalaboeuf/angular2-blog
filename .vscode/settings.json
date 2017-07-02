@@ -2,5 +2,6 @@
 {
   "jshint.enable" : false,
   "editor.tabSize": 2,
-  "editor.insertSpaces": true
+  "editor.insertSpaces": true,
+  "git.ignoreLimitWarning": true
 }
