@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import {Post} from 'app/blog/post/Model/Post';
-import {PostService} from 'app/services/post.service';
+import {Post} from '../../blog/post/Model/Post';
+import {PostService} from '../../services/post.service';
 import {ViewEncapsulation} from '@angular/core';
 import { TagService } from '../tag/tag.service';
 import { UserService } from '../user/user.service';
