@@ -13,10 +13,11 @@ apt:
 
 before_install:
   - npm install npm@5 -g
-  - npm install -g karma
+  - npm install -g @angular/cli@latest
   - npm cache verify
   - npm prune
   - npm update
+
 
 
 install:
