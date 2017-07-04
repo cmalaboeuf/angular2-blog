@@ -1,4 +1,4 @@
  {
-  "database": "mongodb://mongodb:27017/testDatabase",
+  "database": "mongodb://localhost:5018/testDatabase",
   "secret": "testsecret"
 }

@@ -4,23 +4,24 @@ var postsApi = {
   getAll: (req, res) => {
     return mongoose.connection.db.collection('posts').aggregate([
       //find a way to delete password field in response
-      {      
-      $lookup: {
-        from: 'tags',
-        localField:'tags',
-        foreignField:'_id',
-        as : 'tags'
-      },
-       $lookup: {
-        from: 'users',
-        localField:'author',
-        foreignField:'_id',
-        as : 'author'
+      {
+        $lookup: {
+          from: 'tags',
+          localField: 'tags',
+          foreignField: '_id',
+          as: 'tags'
+        },
+        $lookup: {
+          from: 'users',
+          localField: 'author',
+          foreignField: '_id',
+          as: 'author'
+        }
       }
-    }], (err, posts) => {
+    ], (err, posts) => {
       if (!err) {
         return res.send({
-          'data': posts
+          'data': posts || []
         });
       } else {
         return res.send(500, err);
@@ -72,7 +73,7 @@ var postsApi = {
         content: req.body.content || '',
         date: new Date(Date.now()),
         tags: req.body.tags,
-        author : req.body.user
+        author: req.body.user
       }
     }).exec();
     res.status(200);
