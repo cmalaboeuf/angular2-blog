@@ -1,11 +1,11 @@
 process.env.NODE_ENV = 'test';
 
-let Post = require('../models/post');
+let Post = require('../../models/post');
 
 //Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let server = require('../server');
+let server = require('../../server');
 let should = chai.should();
 
 chai.use(chaiHttp);
