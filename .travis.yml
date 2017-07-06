@@ -1,3 +1,4 @@
+group: deprecated-2017Q2
 sudo: required
 services:
   - docker
@@ -31,8 +32,14 @@ before_install:
   - pip install -U docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
   - docker-compose build && docker-compose up -d mongodb node
-
-install:
-  - npm install && cd server && npm install
+  - chmod ugo+x install.sh
+  - sudo chown -R travis ./
+  - chmod 777 server
+  # - whoami
+  - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq yarn
+  - ./install.sh
 
 script: npm run server:test
