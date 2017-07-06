@@ -22,4 +22,4 @@ before_install:
 install:
   - npm install
 
-script: karma start karma.conf.js --single-run
+script: npm run server:test
