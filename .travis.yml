@@ -33,6 +33,6 @@ before_install:
   - docker-compose build && docker-compose up -d mongodb node
 
 install:
-  - npm install
+  - npm install && cd server && npm install
 
 script: npm run server:test
