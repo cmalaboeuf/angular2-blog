@@ -6,7 +6,7 @@ let chai = require('chai');
 let server = require('../../server');
 let User = require('../../models/user');
 var jwt = require('jwt-simple');
-
+chai.should();
 chai.use(chaiHttp);
 
 describe('## Auth APIs', () => {
@@ -17,7 +17,6 @@ describe('## Auth APIs', () => {
     name : 'test',
     firstname: 'test'
   };
-
 
   const invalidUserCredentials = {
     username: 'test',
@@ -31,22 +30,19 @@ describe('## Auth APIs', () => {
       }
     })
   });
-
-  it('should return Authentication succes', (done) => {
-    chai.request(server)
-      .post('/api/adduser')
-      .send(validUserCredentials)
-
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.msg.should.be.to.eql('Successfully saved');
-        res.body.success.should.be.to.eql(true);
-        done();
-      });
-  });
-
   describe('# POST /api/authenticate', () => {
-    it('should return Authentication error wrong user', (done) => {
+    it('should return Authentication succes', (done) => {
+      chai.request(server)
+        .post('/api/adduser')
+        .send(validUserCredentials)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.msg.should.be.to.eql('Successfully saved');
+          res.body.success.should.be.to.eql(true);
+          done();
+        });
+    });
+    it('should return error wrong user', (done) => {
       chai.request(server)
         .post('/api/authenticate')
         .send(invalidUserCredentials)
@@ -58,7 +54,7 @@ describe('## Auth APIs', () => {
         });
 
     });
-    it('should return Authentication error wrong password', (done) => {
+    it('should return error wrong password', (done) => {
       chai.request(server)
         .post('/api/authenticate')
         .send(invalidUserCredentials)
@@ -70,14 +66,14 @@ describe('## Auth APIs', () => {
         });
     });
 
-    it('should return Authentication ', (done) => {
+    it('should return a token', (done) => {
       chai.request(server)
         .post('/api/authenticate')
         .send(validUserCredentials)
         .end((err, res) => {
           res.should.have.status(200);
           User.findOne({
-            email: res.body.email
+            email: validUserCredentials.email
           },(err,user)=>{
             let encodedToken = jwt.encode(user,config.secret);
             res.body.token.should.be.to.eql(encodedToken);

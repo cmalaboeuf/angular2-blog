@@ -1,4 +1,5 @@
  {
   "database": "mongodb://localhost:5018/testDatabase",
-  "secret": "testsecret"
+  "secret": "testsecret",
+  "nodePort":8887
 }

@@ -37,7 +37,7 @@ var postsApi = {
           'data': post
         });
       } else {
-        return res.send(500, err);
+        return res.send(400, err);
       }
     });
   },
@@ -54,11 +54,11 @@ var postsApi = {
     post.save(function (err) {
       if (!err) {
         res.status(200);
-        res.json(post);
+        res.json({data:post, msg :"Post successfully added"});
 
       } else {
-        res.status(500);
-        res.json(err);
+        res.status(400);
+        res.json({err:err});
       }
     });
   },

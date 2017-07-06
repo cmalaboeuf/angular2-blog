@@ -1,5 +1,5 @@
 var User = require('../models/user');
-var config = require('../config/'+ process.env.NODE_ENV + ".json")
+var config = require('../config/'+ process.env.NODE_ENV + '.json');
 var jwt = require('jwt-simple');
 
 var auth = {

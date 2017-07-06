@@ -14,9 +14,9 @@ var mongoose = require('mongoose');
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 var config = require('./config/'+ process.env.NODE_ENV + ".json")
 
-let options = { 
-  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } 
+let options = {
+  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 };
 
 
@@ -51,8 +51,8 @@ var api_auth = require('./routes/api_auth');
 app.use('/api', api_auth);
 
 
-app.listen(8888, function () {
-  winston.log('App Started on PORT 8888');
+app.listen(config.nodePort, ()=> {
+  winston.log('App Started on PORT' + config.nodePort );
 });
 
 module.exports = app;

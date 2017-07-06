@@ -29,6 +29,11 @@ var UserSchema = new Schema({
   facebook_url : {
     typeS :String,
     unique : false
+  },
+  createdAt : {
+    type: Date,
+    required: true,
+    default: Date.now
   }
 });
 
