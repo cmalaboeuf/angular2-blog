@@ -1,4 +1,6 @@
 sudo: required
+services:
+  - docker
 dist: trusty
 language: node_js
 node_js:
@@ -26,15 +28,13 @@ before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - sudo apt-get update
-  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - docker-compose build && docker-compose up -d mongodb node
 
 install:
-  - docker-compose build && docker-compose up -d mongodb node
   - npm install
 
 script: npm run server:test
