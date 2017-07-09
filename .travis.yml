@@ -42,4 +42,4 @@ before_install:
   - sudo apt-get install -y -qq yarn
   - ./install.sh
 
-script: npm run server:test && npm run test 
+script: npm run server:test && ng test
