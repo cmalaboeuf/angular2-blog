@@ -43,4 +43,6 @@ before_install:
   - sudo apt-get install -y -qq yarn
   - ./install.sh
 
+before_script:
+  - npm rebuild node-sass
 script: npm run server:test && karma start karma.conf.js --single-run
