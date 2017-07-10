@@ -44,7 +44,10 @@ module.exports = function (config) {
         base: 'Chrome',
         flags: ['--no-sandbox']
       }
-    }  
+    },
+    client: {
+        captureConsole: false
+    }
   };
   if (process.env.TRAVIS) {
     configuration.browsers = ['Chrome_travis_ci'];
