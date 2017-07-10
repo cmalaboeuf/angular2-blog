@@ -26,7 +26,7 @@ services:
       - "8888:8888"
     volumes:
       - "./server:/app"
-      - /app/node_modules/
+      - /server/node_modules/
     links:
      - nginx
      - mongodb
@@ -36,4 +36,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "./app-angular:/usr/share/nginx/html"
+      - "./src:/usr/share/nginx/html"
