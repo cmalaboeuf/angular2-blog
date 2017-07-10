@@ -27,7 +27,7 @@ services:
       - "8888:8888"
     volumes:
       - "./server:/app"
-      - nodemodules_data:  /app/node_modules/
+      - nodemodules_data:/app/node_modules/
     links:
      - nginx
      - mongodb
