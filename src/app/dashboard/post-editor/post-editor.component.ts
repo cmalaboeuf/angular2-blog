@@ -4,25 +4,47 @@ import {PostService} from '../../services/post.service';
 import {ViewEncapsulation} from '@angular/core';
 import { TagService } from '../tag/tag.service';
 import { UserService } from '../user/user.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-post-editor',
   templateUrl: './post-editor.component.html',
   styleUrls: ['./post-editor.component.css'],
-  providers: [PostService,TagService],
-  encapsulation:ViewEncapsulation.Emulated
+  providers: [PostService, TagService],
+  encapsulation: ViewEncapsulation.Emulated,
+  animations: [
+    trigger('barState', [
+      state('inactive', style({
+        width : '0px'
+      })),
+      state('active',   style({
+        width: '300px'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out')),
+      transition('void => inactive', animate('100ms ease-out')),
+      transition('void => active', animate('100ms ease-in')),
 
+
+    ])
+  ]
 })
 
 export class PostEditorComponent implements OnInit {
 
-  private newPost : Post = new Post();
-  constructor(private postService: PostService, private tagService : TagService,private userService:UserService) {/**/}
+  private newPost: Post = new Post();
+  private barState: String = 'inactive';
+  public items: Array<string> = [];
+  public value: any;
+  private _disabledV = '0';
+  private disabled = false;
+
+  constructor(private postService: PostService, private tagService: TagService, private userService: UserService) {/**/}
 
   ngOnInit() {
-   this.tagService.getAll().subscribe(res=>{
-     return this.items = res["data"].map((item:any)=> {
-       return {id : item._id,text: item.name};
+   this.tagService.getAll().subscribe(res => {
+     return this.items = res['data'].map((item: any) => {
+       return {id : item._id, text: item.name};
      });
     })
   }
@@ -34,11 +56,13 @@ export class PostEditorComponent implements OnInit {
     });
   }
 
- public items:Array<string> = [];
-
-  public value:any;
-  private _disabledV:string = '0';
-  private disabled:boolean = false;
+  toggleStateBar(event) {
+    if(this.barState === 'inactive') {
+      this.barState = 'active';
+    } else {
+      this.barState = 'inactive';
+    }
+  }
 
   private get disabledV():string {
     return this._disabledV;

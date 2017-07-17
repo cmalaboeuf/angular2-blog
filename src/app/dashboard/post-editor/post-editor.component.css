@@ -43,8 +43,25 @@
   border-bottom : 1px solid #dfe1e3;
 }
 
-#save-post{
+#action-bar{
   position: absolute;
   right: 10px;
   top :5px;
+}
+#save-post{
+  position: relative;
+}
+#btn-settings {
+  position: relative;
+  border:none;
+  cursor: pointer;
+}
+#bar-settings {
+  position: absolute;
+  right:0;
+  top:0;
+  height: 100%;
+  border-left : 1px solid #dfe1e3;
+  background-color: white;
+  /*background: #efeff1;*/
 }
