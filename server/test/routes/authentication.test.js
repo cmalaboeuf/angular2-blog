@@ -29,10 +29,11 @@ describe('## Auth APIs', () => {
         done();
       }
     })
+    server.server.close();
   });
   describe('# POST /api/authenticate', () => {
     it('should return Authentication succes', (done) => {
-      chai.request(server)
+      chai.request(server.app)
         .post('/api/adduser')
         .send(validUserCredentials)
         .end((err, res) => {
@@ -43,7 +44,7 @@ describe('## Auth APIs', () => {
         });
     });
     it('should return error wrong user', (done) => {
-      chai.request(server)
+      chai.request(server.app)
         .post('/api/authenticate')
         .send(invalidUserCredentials)
         .end((err, res) => {
@@ -55,7 +56,7 @@ describe('## Auth APIs', () => {
 
     });
     it('should return error wrong password', (done) => {
-      chai.request(server)
+      chai.request(server.app)
         .post('/api/authenticate')
         .send(invalidUserCredentials)
         .end((err, res) => {
@@ -67,7 +68,7 @@ describe('## Auth APIs', () => {
     });
 
     it('should return a token', (done) => {
-      chai.request(server)
+      chai.request(server.app)
         .post('/api/authenticate')
         .send(validUserCredentials)
         .end((err, res) => {

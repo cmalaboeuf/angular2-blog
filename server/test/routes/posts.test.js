@@ -52,7 +52,8 @@ describe('Posts', () => {
           done();
         });
       }
-    })
+    });
+    server.server.close();
   });
 
   /*
@@ -60,7 +61,7 @@ describe('Posts', () => {
    */
   describe('/GET Post', () => {
     it('it should GET all the Posts from unAuth API', (done) => {
-      chai.request(server)
+      chai.request(server.app)
         .get('/api/posts')
         .end((err, res) => {
           res.should.have.status(200);
@@ -71,7 +72,7 @@ describe('Posts', () => {
     });
 
     it('it should GET all the Posts from Auth API', (done) => {
-      chai.request(server)
+      chai.request(server.app)
         .get('/api/v1/posts')
         .set('Authorization','JWT ' +token )
         .end((err, res) => {
@@ -93,7 +94,7 @@ describe('Posts', () => {
         'date' : Date.now,
         'author' : []
       };
-      chai.request(server)
+      chai.request(server.app)
         .post('/api/v1/posts')
         .set('Authorization','JWT ' +token )
         .send(post)
@@ -113,7 +114,7 @@ describe('Posts', () => {
         'date' : Date.now,
         'author' : []
       };
-      chai.request(server)
+      chai.request(server.app)
         .post('/api/v1/posts')
         .set('Authorization','JWT ' +token )
         .send(post)
