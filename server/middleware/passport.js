@@ -1,5 +1,5 @@
 var User = require('../models/user.js');
-var config = require('../config/'+ process.env.NODE_ENV + ".json")
+var config = require('../config/'+ process.env.NODE_ENV + '.json');
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 

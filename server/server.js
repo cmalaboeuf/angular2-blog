@@ -51,8 +51,11 @@ var api_auth = require('./routes/api_auth');
 app.use('/api', api_auth);
 
 
-app.listen(config.nodePort, ()=> {
+let server = app.listen(config.nodePort, ()=> {
   winston.log('App Started on PORT' + config.nodePort );
 });
 
-module.exports = app;
+module.exports = {
+  app,
+  server
+};

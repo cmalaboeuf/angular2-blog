@@ -10,7 +10,7 @@ var postsApi = {
           localField: 'tags',
           foreignField: '_id',
           as: 'tags'
-        },
+        },// eslint-disable-next-line no-dupe-keys,
         $lookup: {
           from: 'users',
           localField: 'author',
@@ -54,7 +54,7 @@ var postsApi = {
     post.save(function (err) {
       if (!err) {
         res.status(200);
-        res.json({data:post, msg :"Post successfully added"});
+        res.json({data:post, msg : 'Post successfully added'});
 
       } else {
         res.status(400);
