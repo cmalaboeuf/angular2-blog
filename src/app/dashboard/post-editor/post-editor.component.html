@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12 border-bottom">
     <header id="post-url-header">
-      <input tabindex="1" id="input-title" type="text" id="post-url" [(ngModel)]="newPost.url"  placeholder="Your post title"/>
+      <input tabindex="1" id="input-title" type="text"  (ngModelChange)="changeInputTitle($event)" id="post-url" [(ngModel)]="newPost.title"  placeholder="Your post title"/>
       <div id="action-bar">
         <button id="btn-settings"><i class="fa fa-cog" aria-hidden="true" (click)="toggleStateBar($event)"></i></button>
         <input tabindex="3" class="btn btn-primary" type="button" id="save-post" name="save-post" value="Save" (click)="saveNewPost($event)"/>
@@ -22,12 +22,20 @@
 
 </div>
 <div [@barState]="barState" id="bar-settings">
-
   <div id="exit">
-    <span (click)="toggleStateBar($event)"><i class="fa fa-times" aria-hidden="true"></i></span>
+    <span  id="close-icon" (click)="toggleStateBar($event)"><i class="fa fa-times" aria-hidden="true"></i></span>
   </div>
-   <ng-select name="list-tag" [allowClear]="true" [multiple]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
-    (removed)="removed($event)"
-    placeholder="No tag selected">
-  </ng-select>
+  <div id="title-bar-settings"><h2>Post settings</h2></div>
+  <div class="form-group">
+    <label for="form-url">url</label>
+    <input type="text" id="form-url" [(ngModel)]="newPost.url" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="formDescription"><strong>Tags</strong></label>
+    <ng-select name="list-tag" [allowClear]="true" [multiple]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
+      (removed)="removed($event)"
+      placeholder="No tag selected">
+    </ng-select>
+  </div>
 </div>

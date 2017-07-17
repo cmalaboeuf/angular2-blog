@@ -15,17 +15,17 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('barState', [
       state('inactive', style({
-        width : '0px'
+        width : '0px',
+        visibility : 'hidden'
       })),
       state('active',   style({
-        width: '300px'
+        width: '300px',
+        visibility : 'visible'
       })),
-      transition('inactive => active', animate('100ms ease-in')),
-      transition('active => inactive', animate('100ms ease-out')),
-      transition('void => inactive', animate('100ms ease-out')),
-      transition('void => active', animate('100ms ease-in')),
-
-
+      transition('inactive => active', animate('200ms ease-in')),
+      transition('active => inactive', animate('200ms ease-out')),
+      transition('void => inactive', animate('200ms ease-out')),
+      transition('void => active', animate('200ms ease-in'))
     ])
   ]
 })
@@ -44,9 +44,10 @@ export class PostEditorComponent implements OnInit {
   ngOnInit() {
    this.tagService.getAll().subscribe(res => {
      return this.items = res['data'].map((item: any) => {
+       console.log(item);
        return {id : item._id, text: item.name};
      });
-    })
+    });
   }
 
   saveNewPost(event){
@@ -62,6 +63,10 @@ export class PostEditorComponent implements OnInit {
     } else {
       this.barState = 'inactive';
     }
+  }
+  changeInputTitle(event){
+    let title = event;
+    this.newPost.url = title.replace(/\s+/g, '-').toLowerCase();    
   }
 
   private get disabledV():string {
