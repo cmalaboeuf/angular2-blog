@@ -45,4 +45,4 @@ before_install:
 
 before_script:
   - npm rebuild node-sass
-script: npm run server:test && karma start karma.conf.js --single-run
+script: npm run test:server && karma start karma.conf.js --single-run

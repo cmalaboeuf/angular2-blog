@@ -4,13 +4,16 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve --proxy-config proxy.conf.json && npm run lint:server",
     "lint": "tslint \"src/**/*.ts\"",
+    "lint:server": "eslint server/**/**.js",
     "test": "ng test",
-    "server:test": "cd server && mocha  --recursive --timeout 10000",
-    "server:test-debug": "cd server && mocha  --recursive --timeout 10000 --debug-brk",
+    "test:server": "cd server && mocha  --recursive --timeout 10000",
+    "test:watch" : "watch ' npm run test:server'",
+    "test:server-debug": "cd server && mocha  --recursive --timeout 10000 --debug-brk",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "pretest:server": "npm run lint:server"
   },
   "private": true,
   "dependencies": {
@@ -55,6 +58,7 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "^2.4.0",
-    "typings": "^2.1.1"
+    "typings": "^2.1.1",
+    "watch": "latest"
   }
 }
