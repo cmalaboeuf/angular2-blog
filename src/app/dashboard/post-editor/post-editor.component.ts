@@ -39,7 +39,9 @@ export class PostEditorComponent implements OnInit {
   public value: any;
   private _disabledV = '0';
   private disabled = false;
-  private postGroup:FormGroup;
+  private postGroup: FormGroup;
+  private sending = false;
+  private error = false;
 
   constructor(private postService: PostService, private tagService: TagService, private userService: UserService, private fb:FormBuilder) {
      this.postGroup = fb.group({
@@ -74,9 +76,15 @@ export class PostEditorComponent implements OnInit {
   }
 
   saveNewPost(event) {
+    this.error = false;
+    this.sending = true;
+
     this.newPost.author = new Array(this.userService.me['data']._id);
     this.postService.add(this.newPost).subscribe(res => {
       return this.newPost;
+    }, err => {
+      this.sending = false;
+      this.error = true;
     });
   }
 
