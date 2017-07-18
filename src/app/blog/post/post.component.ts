@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-import {Post} from './Model/Post';
+import { Post} from './Model/Post';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
-import {ViewEncapsulation} from '@angular/core';
+import { Subscription} from 'rxjs/Subscription';
+import { ViewEncapsulation} from '@angular/core';
 import { Router} from '@angular/router';
 
 @Component({
@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
     this.getPosts();
   }
 
-  goToPostDetail(id){     
+  goToPostDetail(id){
     this.router.navigate(['', id]);
   }
 }

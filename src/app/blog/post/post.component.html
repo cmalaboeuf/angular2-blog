@@ -1,16 +1,17 @@
 <article class="offset-lg-2 col-lg-8 row" *ngFor="let post of posts">
-  <header>
+  <header class="col-lg-12">
     <a [routerLink] (click)=goToPostDetail(post?.url)><h3>{{post.title}}</h3></a>
   </header>
-  <section class="col-lg-12">
-  <p>
-    {{post.content}}
-  </p>
+  <section class="section-post-content">
+    <div [innerHtml]="post.content | markdown| slice:0:100">
+
+    </div>
+    <a class="post-link-arrow"[routerLink] (click)=goToPostDetail(post?.url)> <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
   </section>
   <section class="col-lg-12">
     <a *ngFor="let author of post?.author" href="#">{{author?.firstname }} {{author?.name}}</a>
     <a *ngFor="let tag of post.tags" href="#">{{tag.name}}</a>&nbsp;|&nbsp;
-    <time class="post-date date">{{post.date | date}}</time>
+    <time class="post-date date">{{post?.createdAt | date:'medium'}}</time>
   </section>
   <hr class="post-divider col-lg-12">
 </article>

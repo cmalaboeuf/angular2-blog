@@ -3,6 +3,33 @@ var mongoose = require('mongoose');
 var postsApi = {
   getAll: (req, res) => {
     return mongoose.connection.db.collection('posts').aggregate([
+      {
+        $lookup: {
+          from: 'tags',
+          localField: 'tags',
+          foreignField: '_id',
+          as: 'tags'
+        },// eslint-disable-next-line no-dupe-keys,
+        $lookup: {
+          from: 'users',
+          localField: 'author',
+          foreignField: '_id',
+          as: 'author'
+        }
+      },{$sort: {'createdAt':-1}}
+      ,{$project : {author:{password:0}} }//projection must be after !!!!
+    ], (err, posts) => {
+      if (!err) {
+        return res.send({
+          'data': posts || []
+        });
+      } else {
+        return res.send(500, err);
+      }
+    });
+  },
+  getByUrl: (req, res) => {
+    return mongoose.connection.db.collection('posts').aggregate([
       //find a way to delete password field in response
       {
         $lookup: {
@@ -17,25 +44,16 @@ var postsApi = {
           foreignField: '_id',
           as: 'author'
         }
-      }
-      ,{$sort: {'createdAt':-1}}
-    ], (err, posts) => {
-      if (!err) {
-        return res.send({
-          'data': posts || []
-        });
-      } else {
-        return res.send(500, err);
-      }
-    });
-  },
-  getByUrl: (req, res) => {
-    return Post.findOne({
-      'url': req.params.url
-    }, function (err, post) {
+      },
+      {$project : {author:{password:0}} },
+      {$sort: {'createdAt':-1}},
+      {$match: {'url':req.params.url}}
+
+    ]
+    , function (err, post) {
       if (!err) {
         return res.json({
-          'data': post
+          'data': post[0]
         });
       } else {
         return res.send(400, err);

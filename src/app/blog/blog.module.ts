@@ -13,6 +13,7 @@ import { CustomRequestOptions } from '../my-header';
 import { AuthGuard } from '../auth.guard';
 import { AuthService } from '../services/auth.service';
 
+import { MarkdownPipe } from '../pipe/markdown';
 import { BlogRoutingModule } from './blog-routing.module';
 import { PostComponent } from './post/post.component';
 import { PostDetailComponent } from './post/post-detail.component';
@@ -33,7 +34,8 @@ import { BlogComponent } from './blog.component';
   declarations: [
     PostComponent,
     PostDetailComponent,
-    BlogComponent
+    BlogComponent,
+    MarkdownPipe,
     ],
   providers: [
     AuthGuard,

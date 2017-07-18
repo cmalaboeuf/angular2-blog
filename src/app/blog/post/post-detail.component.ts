@@ -16,16 +16,21 @@ import { Post } from './Model/Post';
       <h3>{{post?.title}}</h3>
     </header>
     <section>
-    <p>
-      {{post?.content}}
-    </p>
+    <div [innerHtml]="post.content | markdown">
+    </div>
     </section>
     <section>
-      <time class="post-date date">{{post?.date | date}}</time>
+      <a *ngFor="let author of post?.author" href="#">{{author?.firstname }} {{author?.name}}</a>
+      <a *ngFor="let tag of post?.tags" href="#">{{tag.name}}</a>&nbsp;|&nbsp;
+      <time class="post-date date">{{post?.createdAt | date:'medium'}}</time>
     </section>
-    <hr class="post-divider">
   </article>
 `,
+  styles: [
+  `app-post-detail {
+    width:100%;
+    margin:15px 0px;
+  }`],
   providers: [PostService],
   encapsulation: ViewEncapsulation.None
 })
