@@ -18,6 +18,7 @@ var postsApi = {
           as: 'author'
         }
       }
+      ,{$sort: {'createdAt':-1}}
     ], (err, posts) => {
       if (!err) {
         return res.send({
@@ -28,9 +29,9 @@ var postsApi = {
       }
     });
   },
-  getById: (req, res) => {
+  getByUrl: (req, res) => {
     return Post.findOne({
-      '_id': req.params.id
+      'url': req.params.url
     }, function (err, post) {
       if (!err) {
         return res.json({
@@ -47,7 +48,6 @@ var postsApi = {
       url: req.body.url,
       content: req.body.content,
       tags: req.body.tags,
-      date: new Date(Date.now()),
       author: req.body.author
     });
 
@@ -71,7 +71,6 @@ var postsApi = {
         title: req.body.title || '',
         url: req.body.url || '',
         content: req.body.content || '',
-        date: new Date(Date.now()),
         tags: req.body.tags,
         author: req.body.user
       }

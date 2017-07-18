@@ -31,15 +31,15 @@ import { Post } from './Model/Post';
 })
 export class PostDetailComponent implements OnInit {
   private post;
-  private sub:any;
-  private id:string;
+  private sub: any;
+  private url: string;
 
   constructor(private postService: PostService,private route : ActivatedRoute) { }
 
   ngOnInit() {
      this.sub = this.route.params.subscribe(params => {
-      this.id = params['slug'];
-      this.postService.getByIdUnauthenticated(this.id).subscribe(res=>{
+      this.url = params['slug'];
+      this.postService.getByIdUnauthenticated(this.url).subscribe(res=>{
         this.post = res['data'] as Post;
         console.log(this.post);
       });

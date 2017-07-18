@@ -1,6 +1,6 @@
 <article class="offset-lg-2 col-lg-8 row" *ngFor="let post of posts">
   <header>
-    <h3><a (click)=goToPostDetail(post?._id)>{{post.title}}</a></h3>
+    <a [routerLink] (click)=goToPostDetail(post?.url)><h3>{{post.title}}</h3></a>
   </header>
   <section class="col-lg-12">
   <p>
@@ -8,11 +8,11 @@
   </p>
   </section>
   <section class="col-lg-12">
-    <a *ngFor="let author of post?.author" href="#">{{author?.firstname }} {{author?.name}}</a> 
-    <a *ngFor="let tag of post.tags" href="#">{{tag.name}}</a>&nbsp;|&nbsp; 
+    <a *ngFor="let author of post?.author" href="#">{{author?.firstname }} {{author?.name}}</a>
+    <a *ngFor="let tag of post.tags" href="#">{{tag.name}}</a>&nbsp;|&nbsp;
     <time class="post-date date">{{post.date | date}}</time>
   </section>
-  <hr class="post-divider">
+  <hr class="post-divider col-lg-12">
 </article>
 <div class="col-lg-12" *ngIf="!posts?.length">
     <h3>No post</h3>
