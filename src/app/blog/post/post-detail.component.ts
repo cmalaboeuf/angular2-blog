@@ -16,30 +16,35 @@ import { Post } from './Model/Post';
       <h3>{{post?.title}}</h3>
     </header>
     <section>
-    <p>
-      {{post?.content}}
-    </p>
+    <div [innerHtml]="post.content | markdown">
+    </div>
     </section>
     <section>
-      <time class="post-date date">{{post?.date | date}}</time>
+      <a *ngFor="let author of post?.author" href="#">{{author?.firstname }} {{author?.name}}</a>
+      <a *ngFor="let tag of post?.tags" href="#">{{tag.name}}</a>&nbsp;|&nbsp;
+      <time class="post-date date">{{post?.createdAt | date:'medium'}}</time>
     </section>
-    <hr class="post-divider">
   </article>
 `,
+  styles: [
+  `app-post-detail {
+    width:100%;
+    margin:15px 0px;
+  }`],
   providers: [PostService],
   encapsulation: ViewEncapsulation.None
 })
 export class PostDetailComponent implements OnInit {
   private post;
-  private sub:any;
-  private id:string;
+  private sub: any;
+  private url: string;
 
   constructor(private postService: PostService,private route : ActivatedRoute) { }
 
   ngOnInit() {
      this.sub = this.route.params.subscribe(params => {
-      this.id = params['slug'];
-      this.postService.getByIdUnauthenticated(this.id).subscribe(res=>{
+      this.url = params['slug'];
+      this.postService.getByIdUnauthenticated(this.url).subscribe(res=>{
         this.post = res['data'] as Post;
         console.log(this.post);
       });

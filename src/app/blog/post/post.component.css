@@ -6,3 +6,18 @@ h3 {
 app-post{
   width : 100%;
 }
+.section-post-content{
+  float:left;
+  width:100%;
+  margin : 0px 15px;
+}
+.section-post-content > div {
+  display: block;
+  float:left;
+  width:90%;
+}
+.post-link-arrow{
+  display: block;
+  float:left;
+  width:10%;
+}

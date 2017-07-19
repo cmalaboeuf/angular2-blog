@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
@@ -27,7 +26,8 @@ import { AuthService } from '../services/auth.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    SelectModule],
+    SelectModule
+  ],
   declarations: [
     PostEditorComponent,
     DashboardComponent,

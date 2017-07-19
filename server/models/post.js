@@ -9,7 +9,9 @@ var Post = new Schema({
     type: String,
     index: {
       unique: true
-    }
+    },
+    required : true,
+    validate : /^[a-z0-9\w\-]+$/
   },
   content: String,
   date: Date,
@@ -24,7 +26,7 @@ var Post = new Schema({
   createdAt: {
     type: Date,
     required: true,
-    default: Date.now
+    default: Date.now()
   },
   updateAt: {
     type: Date,
@@ -34,7 +36,7 @@ var Post = new Schema({
 
 module.exports = mongoose.model('Post', Post);
 
-Post.pre('findOneAndUpdate', (next) => {
+Post.pre('update', (next) => {
   let post = this;
   post.updateAt = Date.now();
   next();

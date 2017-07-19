@@ -4,7 +4,7 @@ html, body {
 }
 body {
   /*background-color: #EEEEEE;*/
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
 .post-divider {

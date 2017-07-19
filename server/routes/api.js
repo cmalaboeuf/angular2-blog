@@ -8,7 +8,7 @@ var users = require('./users');
  * API Posts
  */
 router.get('/posts',posts.getAll);
-router.get('/posts/:id',posts.getById);
+router.get('/posts/:url',posts.getByUrl);
 router.post('/posts', posts.newPost);
 router.put('/posts/:id', posts.editPost);
 router.delete('/posts/:id',posts.deletePost);

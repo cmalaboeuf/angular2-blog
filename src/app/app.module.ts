@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule  } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -20,7 +21,7 @@ import { SelectModule } from 'ng2-select-compat';
 const routes: Routes = [
   { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule',canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: '',loadChildren: 'app/blog/blog.module#BlogModule' },    
+  { path: '',loadChildren: 'app/blog/blog.module#BlogModule' },
   { path: '**', component:PageNotFoundComponent}
 ];
 @NgModule({
@@ -28,10 +29,11 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     PageNotFoundComponent
-    
+
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
