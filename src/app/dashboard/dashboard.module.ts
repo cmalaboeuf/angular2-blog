@@ -21,13 +21,15 @@ import { UserComponent } from './user/user.component';
 import { ClickOutsideDirective } from './clickOutside.directive';
 
 import { AuthService } from '../services/auth.service';
+import { SharedPipeModule } from '../pipe/sharedpipe.module';
 @NgModule({
   imports: [CommonModule,
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    SelectModule
+    SelectModule,
+    SharedPipeModule
   ],
   declarations: [
     PostEditorComponent,
@@ -35,7 +37,6 @@ import { AuthService } from '../services/auth.service';
     TagEditorComponent,
     TagComponent,
     ContentComponent,
-    MarkdownPipe,
     UserComponent,
     ClickOutsideDirective
     ],

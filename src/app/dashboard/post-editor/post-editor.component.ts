@@ -1,11 +1,13 @@
 import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Post } from '../../blog/post/Model/Post';
 import { PostService } from '../../services/post.service';
 import { ViewEncapsulation } from '@angular/core';
 import { TagService } from '../tag/tag.service';
 import { UserService } from '../user/user.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-post-editor',
@@ -42,10 +44,14 @@ export class PostEditorComponent implements OnInit {
   private postGroup: FormGroup;
   private sending = false;
   private error = false;
+  private url = '';
+  private updatePost: Post = null;
 
-  constructor(private postService: PostService, private tagService: TagService, private userService: UserService, private fb:FormBuilder) {
+  constructor(private postService: PostService,
+     private tagService: TagService, private userService: UserService,
+     private fb: FormBuilder,private route: ActivatedRoute) {
      this.postGroup = fb.group({
-      'url':'',
+      'url': '',
       'title': ''
     })
    }
@@ -57,7 +63,7 @@ export class PostEditorComponent implements OnInit {
       });
     });
     this.postGroup.controls['url'].valueChanges.subscribe((
-      url=>{
+      url => {
         this.postGroup.controls['url'].setValue(url.replace(/\s+/g, '-').toLowerCase(),{emitEvent: false});
         this.newPost.url = url;
       })
@@ -73,21 +79,36 @@ export class PostEditorComponent implements OnInit {
         this.newPost.title = title;
       })
     );
+
+    this.route.params.subscribe(params => {
+      this.url = params['url'];
+      if (this.url) {
+        this.postService.getByUrl(this.url).subscribe(res => {
+          this.updatePost = res['data'] as Post;
+          this.postGroup.controls['url'].setValue(this.updatePost.url, {emitEvent: false});
+          this.postGroup.controls['title'].setValue(this.updatePost.title, {emitEvent: false});
+        });
+      }
+    });
   }
 
   saveNewPost(event) {
-    this.error = false;
-    this.sending = true;
-
-    this.newPost.author = new Array(this.userService.me['data']._id);
-    this.postService.add(this.newPost).subscribe(res => {
-      this.sending = false;
+    if (this.updatePost === null) {
       this.error = false;
-      return this.newPost;
-    }, err => {
-      this.sending = false;
-      this.error = true;
-    });
+      this.sending = true;
+
+      this.newPost.author = new Array(this.userService.me['data']._id);
+      this.postService.add(this.newPost).subscribe(res => {
+        this.sending = false;
+        this.error = false;
+        return this.newPost;
+      }, err => {
+        this.sending = false;
+        this.error = true;
+      });
+    } else {
+
+    }
   }
 
   toggleStateBar(event) {

@@ -10,3 +10,15 @@
   flex:2;
   display: flex;
 }
+#content-post {
+  position: relative;
+
+}
+#content-post .card {
+  padding : 20px 15px;
+}
+#content-edit {
+  position: absolute;
+  right: 25px;
+  top : 15px;
+}

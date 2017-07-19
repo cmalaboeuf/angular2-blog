@@ -16,12 +16,14 @@
       <div *ngFor="let post of posts" class="card" (click)="onClick(post)" >
         <div class="card-block">
           <h5 class="card-title">{{post.title}}</h5>
-          <!--<p class="card-text">{{post.content}}|</p>        -->
         </div>
       </div>
     </div>
-    <div class="col-lg-8">
-      <div class="card full-height" *ngIf="posts.length" [innerHtml]="currentPost.content | markdown">
+    <div id="content-post" class="col-lg-8">
+      <div class="card full-height" *ngIf="posts.length" [innerHtml]="currentPost?.content | markdown">
+      </div>
+      <div *ngIf="currentPost" id="content-edit">
+        <a [routerLink]="['/dashboard/editor/',currentPost?.url]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>

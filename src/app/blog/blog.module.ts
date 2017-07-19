@@ -19,6 +19,8 @@ import { PostComponent } from './post/post.component';
 import { PostDetailComponent } from './post/post-detail.component';
 import { BlogComponent } from './blog.component';
 
+import { SharedPipeModule } from '../pipe/sharedpipe.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +28,9 @@ import { BlogComponent } from './blog.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    SelectModule],
+    SelectModule,
+    SharedPipeModule
+  ],
   exports: [
     PostComponent
   ],
@@ -35,7 +39,7 @@ import { BlogComponent } from './blog.component';
     PostComponent,
     PostDetailComponent,
     BlogComponent,
-    MarkdownPipe,
+
     ],
   providers: [
     AuthGuard,

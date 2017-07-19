@@ -10,15 +10,15 @@ import { AuthGuard } from '../auth.guard';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'newpost', pathMatch: 'full'},
+  { path: '', redirectTo: 'editor', pathMatch: 'full'},
   { path: '', component: DashboardComponent, children: [
       { path: 'user/:id', component: UserComponent, canActivateChild: [AuthGuard] },
-      { path: 'newpost', component: PostEditorComponent, canActivateChild: [AuthGuard] },
+      { path: 'editor/:url', component: PostEditorComponent, canActivateChild: [AuthGuard] },
+      { path: 'editor', component: PostEditorComponent, canActivateChild: [AuthGuard] },
       { path: 'tageditor', component: TagEditorComponent, canActivateChild: [AuthGuard] },
       { path: 'content', component: ContentComponent, canActivateChild: [AuthGuard] }
     ]
-  },
-
+  }
 ];
 
 @NgModule({
