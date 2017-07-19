@@ -98,6 +98,10 @@ export class PostEditorComponent implements OnInit {
     }
   }
 
+  closeBar(event) {
+    this.barState = 'inactive';
+  }
+
   private get disabledV(): string {
     return this._disabledV;
   }

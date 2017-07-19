@@ -18,6 +18,7 @@ import { TagComponent } from './tag/tag.component';
 import { ContentComponent } from './content/content.component';
 import { AuthGuard } from '../auth.guard';
 import { UserComponent } from './user/user.component';
+import { ClickOutsideDirective } from './clickOutside.directive';
 
 import { AuthService } from '../services/auth.service';
 @NgModule({
@@ -35,7 +36,8 @@ import { AuthService } from '../services/auth.service';
     TagComponent,
     ContentComponent,
     MarkdownPipe,
-    UserComponent
+    UserComponent,
+    ClickOutsideDirective
     ],
   providers: [
     AuthGuard,
