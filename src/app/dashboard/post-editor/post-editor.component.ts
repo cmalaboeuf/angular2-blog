@@ -64,9 +64,9 @@ export class PostEditorComponent implements OnInit {
     );
 
     this.postGroup.controls['title'].valueChanges.subscribe((
-      title=>{
-        this.newPost.url = this.newPost.url || "";
-        let copyTitle= title.slice(0,-1);
+      title => {
+        this.newPost.url = this.newPost.url || '';
+        let copyTitle = title.slice(0, -1);
         if(copyTitle.replace(/\s+/g, '-').toLowerCase() === this.newPost.url){
           this.postGroup.controls['url'].setValue(title.replace(/\s+/g, '-').toLowerCase());
         }
@@ -81,6 +81,8 @@ export class PostEditorComponent implements OnInit {
 
     this.newPost.author = new Array(this.userService.me['data']._id);
     this.postService.add(this.newPost).subscribe(res => {
+      this.sending = false;
+      this.error = false;
       return this.newPost;
     }, err => {
       this.sending = false;
