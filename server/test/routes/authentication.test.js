@@ -9,7 +9,7 @@ var jwt = require('jwt-simple');
 chai.should();
 chai.use(chaiHttp);
 
-describe('## Auth APIs', () => {
+describe('Auth', () => {
 
   const validUserCredentials = {
     email: 'test',
@@ -31,7 +31,7 @@ describe('## Auth APIs', () => {
     })
     server.server.close();
   });
-  describe('# POST /api/authenticate', () => {
+  describe('/POST /api/authenticate', () => {
     it('should return Authentication succes', (done) => {
       chai.request(server.app)
         .post('/api/adduser')
