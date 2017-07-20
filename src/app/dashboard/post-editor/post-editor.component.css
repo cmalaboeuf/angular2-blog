@@ -4,8 +4,8 @@
 }
 
 #form-output {
-
   width : 100%;
+  overflow-y: scroll;
 }
 #post-input {
   border:none;

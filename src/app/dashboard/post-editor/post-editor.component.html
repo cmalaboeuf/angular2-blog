@@ -18,7 +18,7 @@
     </div>
 
   </div>
-  <div id="form-output" class="col-lg-6" [innerHtml]="updatePost?.content||newPost.content | markdown">
+  <div id="form-output" class="col-lg-6 full-height" [innerHtml]="updatePost?.content||newPost.content | markdown">
   </div>
 </div>
 <div [@barState]="barState" id="bar-settings" (focusout)="toggleStateBar($event)">
