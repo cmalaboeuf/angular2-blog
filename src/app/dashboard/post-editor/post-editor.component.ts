@@ -87,16 +87,16 @@ export class PostEditorComponent implements OnInit {
           this.updatePost = res['data'] as Post;
           this.postGroup.controls['url'].setValue(this.updatePost.url, {emitEvent: false});
           this.postGroup.controls['title'].setValue(this.updatePost.title, {emitEvent: false});
+          console.log(this.updatePost);
         });
       }
     });
   }
 
   saveNewPost(event) {
-    if (this.updatePost === null) {
-      this.error = false;
-      this.sending = true;
-
+    this.error = false;
+    this.sending = true;
+    if (this.updatePost === null) {     
       this.newPost.author = new Array(this.userService.me['data']._id);
       this.postService.add(this.newPost).subscribe(res => {
         this.sending = false;
@@ -106,7 +106,15 @@ export class PostEditorComponent implements OnInit {
         this.sending = false;
         this.error = true;
       });
-    } else {
+    } else {      
+      this.postService.put(this.updatePost).subscribe(res => {
+        this.sending = false;
+        this.error = false;
+        return this.newPost;
+      }, err => {
+        this.sending = false;
+        this.error = true;
+      });
 
     }
   }

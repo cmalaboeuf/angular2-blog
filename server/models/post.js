@@ -10,8 +10,8 @@ var Post = new Schema({
     index: {
       unique: true
     },
-    required : true,
-    validate : /^[a-z0-9\w\-]+$/
+    required: true,
+    validate:/^[a-z0-9\w-]+$/
   },
   content: String,
   date: Date,

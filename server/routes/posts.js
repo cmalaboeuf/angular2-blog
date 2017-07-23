@@ -49,8 +49,7 @@ var postsApi = {
       {$sort: {'createdAt':-1}},
       {$match: {'url':req.params.url}}
 
-    ]
-    , function (err, post) {
+    ], function (err, post) {
       if (!err) {
         return res.json({
           'data': post[0]

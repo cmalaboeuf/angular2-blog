@@ -40,11 +40,8 @@ export class PostService {
   }
 
   put(data) {
-    return new Promise(resolve => {
-      let index = posts.findIndex(todo => todo._id === data._id);
-      posts[index].title = data.title;
-      resolve(data);
-    });
+    return this.http.put(this.baseUrlAuth + '/posts/' + data._id, data)
+      .map(res => res.json());
   }
 
   delete(id) {

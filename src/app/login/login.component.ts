@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.myservice.login(user).then(data => {
       console.log(data);
       if (data){
-        this.router.navigate(["dashboard/newpost"]);
+        this.router.navigate(["dashboard/editor"]);
         return;
       }
     },err=>{
