@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,6 +21,7 @@ import { SelectModule } from 'ng2-select-compat';
 const routes: Routes = [
   { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '', loadChildren: 'app/blog/blog.module#BlogModule' },
   { path: '**', component: PageNotFoundComponent}
 ];
@@ -27,6 +29,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
     PageNotFoundComponent
   ],
   imports: [

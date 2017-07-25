@@ -3,5 +3,6 @@
   "jshint.enable" : false,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "files.eol": "\n"
 }
