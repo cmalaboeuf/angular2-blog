@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/cmalaboeuf/mean-docker-compose.svg?branch=master)](https://travis-ci.org/cmalaboeuf/mean-docker-compose)
-[![Dependency Status](https://david-dm.org/cmalaboeuf/mean-docker-compose.svg)](https://david-dm.org/cmalaboeuf/mean-docker-compose)
+[![Build Status](https://travis-ci.org/cmalaboeuf/angular2-blog.svg?branch=master)](https://travis-ci.org/cmalaboeuf/angular2-blog)
+[![Dependency Status](https://david-dm.org/cmalaboeuf/angular2-blog.svg)](https://david-dm.org/cmalaboeuf/angular2-blog)
 # AppAngular
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1.
