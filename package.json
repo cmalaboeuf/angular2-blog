@@ -13,7 +13,8 @@
     "test:server-debug": "cd server && mocha  --recursive --timeout 10000 --debug-brk",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "pretest:server": "npm run lint:server"
+    "pretest:server": "npm run lint:server",
+    "build:docker" : "ng build && docker-compose -f docker-compose-prod.yml build  && docker-compose -f docker-compose-prod.yml up -d && docker-compose -f docker-compose-prod.yml restart nginx"
   },
   "private": true,
   "dependencies": {

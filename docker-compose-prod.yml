@@ -14,8 +14,6 @@ services:
       context: ./mongodb
     volumes:
       - mongodb_data:/data
-    ports:
-      - "5018:27017"
   node:
     extends:
       file: docker-compose-base.yml
@@ -23,8 +21,6 @@ services:
     build:
       context: ./server
     hostname: node
-    ports:
-      - "8888:8888"
     volumes:
       - "./server:/app"
       - nodemodules_data:/app/node_modules/
@@ -36,3 +32,5 @@ services:
     build: ./nginx
     ports:
       - "80:80"
+    volumes:
+      - "./dist:/usr/share/nginx/html"
