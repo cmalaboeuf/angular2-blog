@@ -17,8 +17,8 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "ng2-select.css"
+        "styles.scss",
+        "ng2-select.scss"
       ],
       "scripts": [
         "../node_modules/showdown/dist/showdown.js"
