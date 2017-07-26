@@ -19,8 +19,10 @@ describe('Auth', () => {
   };
 
   const invalidUserCredentials = {
-    username: 'test',
-    password: 'wrong'
+    email: 'test',
+    password: 'wrong',
+    name : 'test',
+    firstname: 'test'
   };
 
   after(done=>{
@@ -49,7 +51,7 @@ describe('Auth', () => {
         .send(invalidUserCredentials)
         .end((err, res) => {
           res.should.have.status(403);
-          res.body.msg.should.be.to.eql('Authentication failed, User not found');
+          res.body.msg.should.be.to.eql('Authentication failed');
           res.body.success.should.be.to.eql(false);
           done();
         });
@@ -61,7 +63,7 @@ describe('Auth', () => {
         .send(invalidUserCredentials)
         .end((err, res) => {
           res.should.have.status(403);
-          res.body.msg.should.be.to.eql('Authentication failed, User not found');
+          res.body.msg.should.be.to.eql('Authentication failed');
           res.body.success.should.be.to.eql(false);
           done();
         });

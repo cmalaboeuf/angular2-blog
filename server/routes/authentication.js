@@ -9,7 +9,7 @@ var auth = {
     }, function (err, user) {
       if (err) throw err;
       if (!user) {
-        res.status(403).send({ success: false, msg: 'Authentication failed, User not found' });
+        res.status(403).send({ success: false, msg: 'Authentication failed' });
       }
 
       else {
@@ -18,7 +18,7 @@ var auth = {
             var token = jwt.encode(user, config.secret);
             res.json({ success: true, token: token ,user});
           } else {
-            return res.status(403).send({ success: false, msg: 'Authenticaton failed, wrong password.' });
+            return res.status(403).send({ success: false, msg: 'Authentication failed' });
           }
         });
       }
