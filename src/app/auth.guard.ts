@@ -3,7 +3,7 @@ import { Router, CanActivate, CanActivateChild } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-  //This maner of writing param initialize and create param router
+  // This maner of writing param initialize and create param router
   constructor(private router : Router) {
   }
 

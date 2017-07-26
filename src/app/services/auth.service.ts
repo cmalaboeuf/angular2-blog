@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   public http: Http;
-  public isLoggedin:boolean;
+  public isLoggedin: boolean;
 
-  constructor(http:Http) {
+  constructor(http: Http, private router: Router) {
     this.http = http;
     this.isLoggedin = false;
   }
 
-  login(user):any {
-    var headers = new Headers();
-    var creds = {
-      email : user.email,
+  login(user): any {
+    let headers = new Headers();
+    let creds = {
+      email: user.email,
       password: user.password
     };
     headers.append('Content-Type', 'application/json');
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       this.http.post('http://localhost/api/authenticate', creds, { headers }).subscribe(data => {
         if (data.json().success) {
           window.localStorage.setItem('currentUser', data.json().token);
           this.isLoggedin = true;
           resolve(this.isLoggedin);
         }
-      }, err=>{reject(err)});
+      }, err => {
+        reject(err);
+      });
     });
   }
 
@@ -41,22 +44,23 @@ export class AuthService {
   //   });
   // }
 
-  register(user):any {
+  register(user): any {
     return new Promise(resolve => {
-      var creds = "name=" + user.name + "&password=" + user.password;
-      var headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      this.http.post('http://localhost/api/adduser', creds, { headers: headers }).subscribe(data => {
-        if (data.json().success)
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post('http://localhost/api/adduser', user, { headers }).subscribe(data => {
+        if (data.json().success) {
           resolve(true);
-        else
+        } else {
           resolve(false);
+        }
       });
     });
   }
 
-  logout():void {
+  logout(): void {
     this.isLoggedin = false;
     window.localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }
