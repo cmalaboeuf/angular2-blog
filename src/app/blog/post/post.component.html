@@ -3,7 +3,7 @@
     <a [routerLink] (click)=goToPostDetail(post?.url)><h3>{{post.title}}</h3></a>
   </header>
   <section class="section-post-content">
-    <div [innerHtml]="post.content | markdown| slice:0:100">
+    <div [innerHtml]="post?.content | markdown| slice:0:100">
 
     </div>
     <a class="post-link-arrow"[routerLink] (click)=goToPostDetail(post?.url)> <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>

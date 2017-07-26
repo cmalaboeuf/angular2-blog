@@ -16,7 +16,7 @@ import { Post } from './Model/Post';
       <h3>{{post?.title}}</h3>
     </header>
     <section>
-    <div [innerHtml]="post.content | markdown">
+    <div [innerHtml]="post?.content | markdown">
     </div>
     </section>
     <section>
@@ -46,7 +46,7 @@ export class PostDetailComponent implements OnInit {
       this.url = params['slug'];
       this.postService.getByIdUnauthenticated(this.url).subscribe(res=>{
         this.post = res['data'] as Post;
-        console.log(this.post);
+
       });
     });
   }
