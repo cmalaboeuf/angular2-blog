@@ -3,7 +3,7 @@
     <header id="post-url-header">
       <input tabindex="1" id="input-title" type="text" [formControl]="postGroup.controls['title']"  id="post-url"  placeholder="Your post title"/>
       <div id="action-bar">
-        <button id="btn-settings"><i class="fa fa-cog" aria-hidden="true" (clickOutside)="closeBar($event)" (click)="toggleStateBar($event)"></i></button>
+        <button id="btn-settings"><i class="fa fa-cog" aria-hidden="true"  (click)="toggleStateBar($event)"></i></button>
         <button tabindex="3"  [ngClass]="{'btn-danger':error}" class="btn btn-primary" type="button" id="save-post" name="save-post" [innerHtml]="updatePost?'Update':'Save'" (click)="saveNewPost($event)">
           <i [ngClass]="{'fa fa-spinner fa-spin':sending}"></i>
         </button>
@@ -11,7 +11,7 @@
     </header>
     </div>
 </div>
-<div class="row full-height">
+<div class="row full-height" (click)="closeBar($event)">
   <div class="col-lg-6" contenteditable="true" >
     <div class="input-group full-height">
       <textarea tabindex="2" class="form-control full-height" id="post-input"  [(ngModel)]="updatePost?.content||newPost.content " ></textarea>
@@ -21,7 +21,7 @@
   <div id="form-output" class="col-lg-6 full-height" [innerHtml]="updatePost?.content||newPost.content | markdown">
   </div>
 </div>
-<div [@barState]="barState" id="bar-settings" (focusout)="toggleStateBar($event)">
+<div [@barState]="barState" id="bar-settings" >
   <div id="exit">
     <span  id="close-icon" (click)="toggleStateBar($event)"><i class="fa fa-times" aria-hidden="true"></i></span>
   </div>

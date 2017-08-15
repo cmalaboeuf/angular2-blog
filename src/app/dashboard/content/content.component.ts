@@ -17,8 +17,8 @@ export class ContentComponent implements OnInit {
     this.postService = _postService;
     this.posts = new Array();
     this.currentPost = null;
-  }
-
+  }  
+  
   getPosts() {
     return this.postService.getAll().subscribe(res => {
       return this.posts = res['data'] || [];
@@ -33,10 +33,5 @@ export class ContentComponent implements OnInit {
     if (this.posts.length > 0) {
       this.currentPost = this.posts.shift();
     }
-  }
-
-   goToPostEditor(id){
-     console.log(id);
-    this.router.navigate(['/newpost/', id]);
   }
 }

@@ -14,7 +14,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './post-editor.component.html',
   styleUrls: ['./post-editor.component.css'],
   providers: [PostService, TagService],
-  encapsulation: ViewEncapsulation.Emulated,
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('barState', [
       state('inactive', style({
@@ -107,6 +107,7 @@ export class PostEditorComponent implements OnInit {
         this.error = true;
       });
     } else {      
+      console.log(this.updatePost);
       this.postService.put(this.updatePost).subscribe(res => {
         this.sending = false;
         this.error = false;
@@ -149,7 +150,9 @@ export class PostEditorComponent implements OnInit {
   }
 
   public refreshValue(value: any): void {
-    this.newPost.tags = value.map((item: any) => {
+    let post:Post = this.updatePost || this.newPost;
+    console.log(value);
+    post.tags = value.map((item: any) => {
       return item.id;
     });
   }
