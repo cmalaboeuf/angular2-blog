@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json && npm run lint:server",
     "lint": "tslint \"src/**/*.ts\"",
-    "lint:server": "eslint server/**/*.js",
+    "lint:server": "eslint ./server --ignore-path .gitignore ",
     "test": "ng test",
     "test:server": "cd server && mocha  --recursive --timeout 10000",
     "test:watch": "watch ' npm run test:server'",
@@ -37,7 +37,7 @@
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
-    "@angular/cli": "^1.1.3",
+    "@angular/cli": "^1.4.1",
     "@angular/compiler-cli": "^4.1.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
