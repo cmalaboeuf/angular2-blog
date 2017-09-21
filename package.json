@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json && npm run lint:server",
     "lint": "tslint \"src/**/*.ts\"",
-    "lint:server": "eslint ./server --ignore-path .gitignore ",
+    "lint:server": "./node_modules/.bin/eslint ./server --ignore-path .gitignore ",
     "test": "ng test",
     "test:server": "cd server && mocha  --recursive --timeout 10000",
     "test:watch": "watch ' npm run test:server'",
